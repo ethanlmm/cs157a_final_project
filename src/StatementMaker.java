@@ -26,16 +26,16 @@ public class StatementMaker {
     }
 
     private void SELECT(StringBuffer target, String[] colum) {
-        if (colum.length > 0) target.append("SELECT " + strWrapper(colum, ",", false));
+        if (colum.length > 0) target.append("SELECT ").append(strWrapper(colum, ",", false));
         else target.append("SELECT *");
     }
 
     private void FROM(StringBuffer target, String Statement) {
-        target.append(" FROM " + Statement);
+        target.append(" FROM ").append(Statement);
     }
 
     private void WHERE(StringBuffer target, String statement) {
-        if (!statement.equals("")) target.append(" WHERE " + statement);
+        if (!statement.equals("")) target.append(" WHERE ").append(statement);
     }
 
     private void INSERT_INTO(StringBuffer target, String table_name, String[] fields_table) {
@@ -50,7 +50,7 @@ public class StatementMaker {
     }
 
     //make life easier
-    public static String[] list(String... lst) {
+    public static String[] arr(String... lst) {
         return lst;
     }
 
@@ -64,7 +64,7 @@ public class StatementMaker {
         StringBuffer result = new StringBuffer();
         for (int i = 0; i < lst.length; i++) {
             if (!isON || lst[i].matches("NULL|\\d|<|>|==|,")) result.append(lst[i]);
-            else result.append("\"" + lst[i] + "\"");
+            else result.append("\"").append(lst[i]).append("\"");
             if (!spliter.equals("") && i < lst.length - 1) result.append(spliter);
         }
         return result;
@@ -80,8 +80,8 @@ public class StatementMaker {
     public static void main(String[] args) {
         StatementMaker s = new StatementMaker();
 
-        String x = s.insert("medical", list("FIRST_NAME", "LAST_NAME"), list("Tom", "Woods"));
-        String y = s.select(list("A", "B", "C", "D"), "CUSTOMER", str("test", "==", "1"));
+        String x = s.insert("medical", arr("FIRST_NAME", "LAST_NAME"), arr("Tom", "Woods"));
+        String y = s.select(arr("A", "B", "C", "D"), "CUSTOMER", str("test", "==", "1"));
         System.out.println(x);
         System.out.println(y);
     }
