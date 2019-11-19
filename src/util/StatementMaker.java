@@ -1,0 +1,94 @@
+package util;
+
+import java.lang.StringBuffer;
+
+public class StatementMaker {
+
+
+    public static String insert(String table_name, String[] fields_table, String[] values_table) {
+        if (fields_table.length != values_table.length) {
+            return "";
+        }
+        StringBuffer result = new StringBuffer();
+
+        INSERT_INTO(result, table_name, fields_table);
+        VALUE(result, values_table);
+
+        return result.append(";").toString();
+
+    }
+
+
+    public static String select(String[] select_colum, String from_statement, String where_statement) {
+        StringBuffer result = new StringBuffer();
+        SELECT(result, select_colum);
+        FROM(result, from_statement);
+        WHERE(result, where_statement);
+
+        return result.append(";").toString();
+    }
+
+    private static void SELECT(StringBuffer target, String[] colum) {
+        if (colum.length > 0) target.append("SELECT " + strWrapper(colum, ",", false));
+        else target.append("SELECT *");
+    }
+
+    private static void FROM(StringBuffer target, String Statement) {
+        target.append(" FROM " + Statement);
+    }
+
+    private static void WHERE(StringBuffer target, String statement) {
+        if (!statement.equals("")) target.append(" WHERE " + statement);
+    }
+
+    private static void INSERT_INTO(StringBuffer target, String table_name, String[] fields_table) {
+        target.append("INSERT INTO ");
+        target.append(table_name);
+        target.append(asTuple(fields_table, false));
+    }
+
+    private static void VALUE(StringBuffer target, String[] values_table) {
+        target.append(" VALUE ");
+        target.append(asTuple(values_table, true));
+    }
+
+    //make life easier
+    public static String[] list(String... lst) {
+        return lst;
+    }
+
+    public static String str(String... x) {
+        return strWrapper(x, "", true).toString();
+    }
+
+    //a string wrapper, it will skip non-string String;
+    //isOn: auto wrapp string with "" if true
+    public static StringBuffer strWrapper(String[] lst, String spliter, Boolean isON) {
+        StringBuffer result = new StringBuffer();
+        for (int i = 0; i < lst.length; i++) {
+            if (!isON || lst[i].matches("NULL|[0-9]*|\\d|<|>|==|,")) result.append(lst[i]);
+            else result.append("\"" + lst[i] + "\"");
+            if (!spliter.equals("") && i < lst.length - 1) result.append(spliter);
+        }
+        return result;
+    }
+
+    public static StringBuffer asTuple(String[] lst, boolean isON) {
+        StringBuffer result = new StringBuffer("(");
+        result.append(strWrapper(lst, ",", isON));
+        result.append(")");
+        return result;
+    }
+
+    public static void main(String[] args) {
+        StatementMaker s = new StatementMaker();
+
+        String x = s.insert("medical", list("FIRST_NAME", "LAST_NAME"), list("Tom", "Woods"));
+        String y = s.select(list("A", "B", "C", "D"), "CUSTOMER", str("test", "==", "1000"));
+        System.out.println(x);
+        System.out.println(y);
+    }
+
+
+}
+

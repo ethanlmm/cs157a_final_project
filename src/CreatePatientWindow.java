@@ -1,7 +1,11 @@
+import Function.F;
+import util.Util;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import static util.StatementMaker.*;
+import static util.Util.*;
 import javax.swing.*;
 
 public class CreatePatientWindow {
@@ -130,7 +134,15 @@ public class CreatePatientWindow {
 				String dobYear = String.valueOf(yearSpinner.getValue());
 				String sex = (String)sexSpinner.getValue();
 				String phone = phoneTField.getText();
-						
+
+
+
+
+				String statement=insert("Patient",list("FirstName","LastName","streetAddress","zipcode","City","dobMonth","DobDay","DobYear","Sex","Phone"),
+						                                            list(firstName,lastName,streetAddress, zipcode, city, dobMonth,dobDay, dobYear,sex,phone));
+
+
+				print(statement);
 				//Now you can do stuff with the strings.
 				//Right now we could probably add jdbc code here,
 				//but it could be better to add it to another class.
