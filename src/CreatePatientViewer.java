@@ -8,15 +8,16 @@ import static util.StatementMaker.*;
 import static util.Util.*;
 import javax.swing.*;
 
-public class CreatePatientWindow {
+public class CreatePatientViewer {
 	
 	
-	public static void main(String args[])
+	public CreatePatientViewer()
 	{
-		JFrame frame = new JFrame();
+		JDialog dialog = new JDialog();
+		dialog.setModal(true);
 		final int TEXTFIELD_WIDTH = 20;
 		
-		frame.setLayout(new GridBagLayout());
+		dialog.setLayout(new GridBagLayout());
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 		
@@ -25,50 +26,50 @@ public class CreatePatientWindow {
 		firstNameTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 0;
 		constraints.gridy = 0;
-		frame.add(firstNameLabel, constraints);
+		dialog.add(firstNameLabel, constraints);
 		constraints.gridx = 1;
 		constraints.gridy = 0;
-		frame.add(firstNameTField, constraints);
+		dialog.add(firstNameTField, constraints);
 		
 		JLabel lastNameLabel = new JLabel("Last Name", SwingConstants.RIGHT);
 		JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
 		lastNameTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 2;
 		constraints.gridy = 0;
-		frame.add(lastNameLabel, constraints);
+		dialog.add(lastNameLabel, constraints);
 		constraints.gridx = 3;
 		constraints.gridy = 0;
-		frame.add(lastNameTField, constraints);
+		dialog.add(lastNameTField, constraints);
 		
 		JLabel streetAddressLabel = new JLabel("Street Address", SwingConstants.RIGHT);
 		JTextField streetAddressTField = new JTextField(TEXTFIELD_WIDTH);
 		streetAddressTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 0;
 		constraints.gridy = 1;
-		frame.add(streetAddressLabel, constraints);
+		dialog.add(streetAddressLabel, constraints);
 		constraints.gridx = 1;
 		constraints.gridy = 1;
-		frame.add(streetAddressTField, constraints);
+		dialog.add(streetAddressTField, constraints);
 		
 		JLabel zipcodeLabel = new JLabel("Zipcode", SwingConstants.RIGHT);
 		JTextField zipcodeTField = new JTextField(TEXTFIELD_WIDTH);
 		zipcodeTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 2;
 		constraints.gridy = 1;
-		frame.add(zipcodeLabel, constraints);
+		dialog.add(zipcodeLabel, constraints);
 		constraints.gridx = 3;
 		constraints.gridy = 1;
-		frame.add(zipcodeTField, constraints);
+		dialog.add(zipcodeTField, constraints);
 		
 		JLabel cityLabel = new JLabel("City", SwingConstants.RIGHT);
 		JTextField cityTField = new JTextField(TEXTFIELD_WIDTH);
 		cityTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 0;
 		constraints.gridy = 2;
-		frame.add(cityLabel, constraints);
+		dialog.add(cityLabel, constraints);
 		constraints.gridx = 1;
 		constraints.gridy = 2;
-		frame.add(cityTField, constraints);
+		dialog.add(cityTField, constraints);
 		
 		JLabel dobLabel = new JLabel("Date of Birth", SwingConstants.RIGHT);
 		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
@@ -81,10 +82,10 @@ public class CreatePatientWindow {
 		dobPanel.add(yearSpinner);
 		constraints.gridx = 2;
 		constraints.gridy = 2;
-		frame.add(dobLabel, constraints);
+		dialog.add(dobLabel, constraints);
 		constraints.gridx = 3;
 		constraints.gridy = 2;
-		frame.add(dobPanel, constraints);
+		dialog.add(dobPanel, constraints);
 //		constraints.gridx = 4;
 //		constraints.gridy = 2;
 //		frame.add(daySpinner, constraints);
@@ -97,27 +98,27 @@ public class CreatePatientWindow {
 		JSpinner sexSpinner = new JSpinner(new SpinnerListModel(sexes));
 		constraints.gridx = 0;
 		constraints.gridy = 3;
-		frame.add(sexLabel, constraints);
+		dialog.add(sexLabel, constraints);
 		constraints.gridx = 1;
 		constraints.gridy = 3;
-		frame.add(sexSpinner, constraints);
+		dialog.add(sexSpinner, constraints);
 		
 		JLabel phoneLabel = new JLabel("Phone Number", SwingConstants.RIGHT);
 		JTextField phoneTField = new JTextField(TEXTFIELD_WIDTH	);
 		phoneTField.setHorizontalAlignment(JTextField.RIGHT);
 		constraints.gridx = 2;
 		constraints.gridy = 3;
-		frame.add(phoneLabel, constraints);
+		dialog.add(phoneLabel, constraints);
 		constraints.gridx = 3;
 		constraints.gridy = 3;
-		frame.add(phoneTField, constraints);
+		dialog.add(phoneTField, constraints);
 		
 		
 		
 		JButton confirmButton = new JButton("OK");
 		constraints.gridx = 1;
 		constraints.gridy = 4;
-		frame.add(confirmButton, constraints);
+		dialog.add(confirmButton, constraints);
 		
 		class PatientInfoParser implements ActionListener {
 
@@ -168,10 +169,10 @@ public class CreatePatientWindow {
 		
 		confirmButton.addActionListener(new PatientInfoParser());
 		
-		frame.pack();
-		frame.setVisible(true);
+		dialog.pack();
+		dialog.setVisible(true);
 		
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 		
 	}
 
