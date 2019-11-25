@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Patient` (
   `gender` VARCHAR(45) NOT NULL,
   `phone_num` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`THC_Num`),
-  UNIQUE INDEX `THC_Num_UNIQUE` (`THC_Num` ASC) VISIBLE)
+  UNIQUE INDEX `THC_Num_UNIQUE` (`THC_Num` ASC))
 ENGINE = InnoDB;
 
 
@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Visit` (
   `date_of_visit` VARCHAR(45) NOT NULL,
   `Patient_THC_Num` INT NOT NULL,
   PRIMARY KEY (`visit_id`),
-  UNIQUE INDEX `visit_id_UNIQUE` (`visit_id` ASC) VISIBLE,
-  INDEX `fk_Visit_Patient1_idx` (`Patient_THC_Num` ASC) VISIBLE,
+  UNIQUE INDEX `visit_id_UNIQUE` (`visit_id` ASC),
+  INDEX `fk_Visit_Patient1_idx` (`Patient_THC_Num` ASC),
   CONSTRAINT `fk_Visit_Patient1`
     FOREIGN KEY (`Patient_THC_Num`)
     REFERENCES `mydb`.`Patient` (`THC_Num`)
@@ -58,8 +58,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Chemical_Category` (
   `chemical_name` VARCHAR(45) NOT NULL,
   `chemical_description` VARCHAR(45) NULL,
   PRIMARY KEY (`chemical_id`),
-  UNIQUE INDEX `Chemical_Categorycol_UNIQUE` (`chemical_description` ASC) VISIBLE,
-  UNIQUE INDEX `chemical_id_UNIQUE` (`chemical_id` ASC) VISIBLE)
+  UNIQUE INDEX `Chemical_Categorycol_UNIQUE` (`chemical_description` ASC),
+  UNIQUE INDEX `chemical_id_UNIQUE` (`chemical_id` ASC))
 ENGINE = InnoDB;
 
 
@@ -69,7 +69,7 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `mydb`.`Audiogram_test_id` (
   `Visit_visit_id` INT NOT NULL,
   `Audiologicalcol` VARCHAR(45) NOT NULL,
-  INDEX `fk_Audiological_Visit_idx` (`Visit_visit_id` ASC) VISIBLE,
+  INDEX `fk_Audiological_Visit_idx` (`Visit_visit_id` ASC),
   PRIMARY KEY (`Audiologicalcol`),
   CONSTRAINT `fk_Audiological_Visit`
     FOREIGN KEY (`Visit_visit_id`)
@@ -87,8 +87,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Generic` (
   `generic_name` VARCHAR(45) NOT NULL,
   `generic_description` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`generic_ID`),
-  UNIQUE INDEX `generic_ID_UNIQUE` (`generic_ID` ASC) VISIBLE,
-  UNIQUE INDEX `generic_description_UNIQUE` (`generic_description` ASC) VISIBLE)
+  UNIQUE INDEX `generic_ID_UNIQUE` (`generic_ID` ASC),
+  UNIQUE INDEX `generic_description_UNIQUE` (`generic_description` ASC))
 ENGINE = InnoDB;
 
 
@@ -100,8 +100,8 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Disease` (
   `disease_name` VARCHAR(45) NOT NULL,
   `disease_description` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`disease_ID`),
-  UNIQUE INDEX `idDisease_UNIQUE` (`disease_ID` ASC) VISIBLE,
-  UNIQUE INDEX `Diseasecol_UNIQUE` (`disease_description` ASC) VISIBLE)
+  UNIQUE INDEX `idDisease_UNIQUE` (`disease_ID` ASC),
+  UNIQUE INDEX `Diseasecol_UNIQUE` (`disease_description` ASC))
 ENGINE = InnoDB;
 
 
@@ -118,11 +118,11 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Medicant` (
   `Disease_disease_ID` INT NOT NULL,
   `Chemical_Category_chemical_id` INT NOT NULL,
   PRIMARY KEY (`med_ID`),
-  UNIQUE INDEX `med_ID_UNIQUE` (`med_ID` ASC) VISIBLE,
-  UNIQUE INDEX `medicant_description_UNIQUE` (`medicant_description` ASC) VISIBLE,
-  INDEX `fk_Medicant_Generic1_idx` (`Generic_generic_ID` ASC) VISIBLE,
-  INDEX `fk_Medicant_Disease1_idx` (`Disease_disease_ID` ASC) VISIBLE,
-  INDEX `fk_Medicant_Chemical_Category1_idx` (`Chemical_Category_chemical_id` ASC) VISIBLE,
+  UNIQUE INDEX `med_ID_UNIQUE` (`med_ID` ASC),
+  UNIQUE INDEX `medicant_description_UNIQUE` (`medicant_description` ASC),
+  INDEX `fk_Medicant_Generic1_idx` (`Generic_generic_ID` ASC),
+  INDEX `fk_Medicant_Disease1_idx` (`Disease_disease_ID` ASC),
+  INDEX `fk_Medicant_Chemical_Category1_idx` (`Chemical_Category_chemical_id` ASC),
   CONSTRAINT `fk_Medicant_Generic1`
     FOREIGN KEY (`Generic_generic_ID`)
     REFERENCES `mydb`.`Generic` (`generic_ID`)
@@ -150,7 +150,7 @@ CREATE TABLE IF NOT EXISTS `mydb`.`Pharmachology` (
   `dose` VARCHAR(45) NOT NULL,
   `duration` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`Visit_visit_id`, `Medicant_med_ID`),
-  INDEX `fk_Parmachology_Medicant1_idx` (`Medicant_med_ID` ASC) VISIBLE,
+  INDEX `fk_Parmachology_Medicant1_idx` (`Medicant_med_ID` ASC),
   CONSTRAINT `fk_Parmachology_Visit1`
     FOREIGN KEY (`Visit_visit_id`)
     REFERENCES `mydb`.`Visit` (`visit_id`)
