@@ -27,6 +27,7 @@ public class MainWindowController {
 		public void actionPerformed(ActionEvent ae)
 		{
 			CreatePatientViewer cpv = new CreatePatientViewer();
+			CreatePatientController cpc = new CreatePatientController(cpv);
 		}
 	}
 	
@@ -34,7 +35,8 @@ public class MainWindowController {
 	{
 		public void actionPerformed(ActionEvent ae)
 		{
-			
+			PatientSearchViewer psv = new PatientSearchViewer();
+			PatientSearchController psc = new PatientSearchController(psv);
 		}
 	}
 	
