@@ -38,9 +38,11 @@ public class MainWindowViewer {
 //		returnPatientButton.addActionListener(new ReturnActionListener());
 //		createPatientButton.addActionListener(new CreatePatientActionListener());
 		
+		JPanel visitCard = new JPanel();
+		
 		cards.add(eTRTCard, ETRT_CARD);
 		cards.add(patientCard, PATIENT_CARD);
-		
+		cards.add(visitCard, VISIT_CARD);
 		
 		
 		
