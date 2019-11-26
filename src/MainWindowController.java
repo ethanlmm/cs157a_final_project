@@ -13,12 +13,22 @@ public class MainWindowController {
 		viewer.addReturnPatientButtonAction(new ReturnActionListener());
 		viewer.addCreatePatientButtonAction(new CreatePatientActionListener());
 		viewer.addEditPatientAction(new EditPatientActionListener());
+		
+		viewer.addVisitButtonAction(new VisitActionListener());
 	}
 	
 	public class PatientActionListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent ae) {
 			viewer.switchCard(MainWindowViewer.PATIENT_CARD);
+		}
+	}
+	
+	public class VisitActionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent val)
+		{
+			viewer.switchCard(MainWindowViewer.VISIT_CARD);
 		}
 	}
 	

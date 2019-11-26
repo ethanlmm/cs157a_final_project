@@ -12,6 +12,7 @@ public class MainWindowViewer {
 	
 	public final static String ETRT_CARD = "eTRT";
 	public final static String PATIENT_CARD = "patient";
+	public final static String VISIT_CARD = "visit";
 	
 	private JButton patientButton = new JButton("Patients");
 	private JButton visitButton = new JButton("Visits");
@@ -95,5 +96,6 @@ public class MainWindowViewer {
 		returnPatientButton.addActionListener(al);
 	}
 	
+	//adds actions to the Visit menu button
 	
 }
