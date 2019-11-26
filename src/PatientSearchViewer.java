@@ -19,8 +19,13 @@ import javax.swing.table.DefaultTableModel;
 
 public class PatientSearchViewer {
 	
+	private final int TEXTFIELD_WIDTH = 20;
 	private JButton editButton = new JButton("Edit");
 	private JButton searchButton = new JButton("Search");
+	private JTextField patientTHCTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField firstNameTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField phoneTField = new JTextField(TEXTFIELD_WIDTH);
 	
 	private JTable table;
 	private JDialog dialog;
@@ -36,20 +41,32 @@ public class PatientSearchViewer {
 		model.addRow(new String[] {"french bread pls giv", "Kaguya"});
 		
 		
-		
 		table = new JTable(model);
 		JScrollPane tableScrollPane = new JScrollPane(table);
 		table.setFillsViewportHeight(true);
 		table.setAutoCreateRowSorter(true);
 		
 		JPanel searchPanel = new JPanel();
-		final int TEXTFIELD_WIDTH = 20;
+		
+		JLabel patientTHCLabel = new JLabel("Patient THC", SwingConstants.RIGHT);
+		patientTHCTField.setHorizontalAlignment(JTextField.RIGHT);
+		searchPanel.add(patientTHCLabel);
+		searchPanel.add(patientTHCTField);
+		
+		JLabel firstNameLabel = new JLabel("First Name", SwingConstants.RIGHT);
+		firstNameTField.setHorizontalAlignment(JTextField.RIGHT);
+		searchPanel.add(firstNameLabel);
+		searchPanel.add(firstNameTField);
 		
 		JLabel lastNameLabel = new JLabel("Last Name", SwingConstants.RIGHT);
-		JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
 		lastNameTField.setHorizontalAlignment(JTextField.RIGHT);
 		searchPanel.add(lastNameLabel);
 		searchPanel.add(lastNameTField);
+		
+		JLabel phoneLabel = new JLabel("Phone Number", SwingConstants.RIGHT);
+		phoneTField.setHorizontalAlignment(JTextField.RIGHT);
+		searchPanel.add(phoneLabel);
+		searchPanel.add(phoneTField);
 		
 		searchPanel.add(searchButton);
 		
@@ -64,8 +81,6 @@ public class PatientSearchViewer {
 		dialog.pack();
 		dialog.setVisible(true);
 		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
-		
-		
 	}
 	
 	public void addEditButtonAction(ActionListener al)
@@ -81,6 +96,26 @@ public class PatientSearchViewer {
 	public void setTable(DefaultTableModel model)
 	{
 		table.setModel(model);
+	}
+	
+	public String getPatientTHC()
+	{
+		return patientTHCTField.getText();
+	}
+	
+	public String getFirstName()
+	{
+		return firstNameTField.getText();
+	}
+	
+	public String getLastName()
+	{
+		return lastNameTField.getText();
+	}
+	
+	public String getPhone()
+	{
+		return phoneTField.getText();
 	}
 	
 }
