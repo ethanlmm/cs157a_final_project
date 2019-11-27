@@ -32,6 +32,7 @@ public class PatientSearchController {
 			SQLUtil.printSQLExceptions(se);
 		}
 		viewer.addSearchButtonAction(new SearchActionListener());
+		viewer.addAddAudiologyButtonAction(new AddAudiologyActionListener());
 	}
 	
 	//original
@@ -107,6 +108,19 @@ public class PatientSearchController {
 //				SQLUtil.printSQLExceptions(se);
 				se.printStackTrace();
 			}
+		}
+	}
+	
+	private class AddAudiologyActionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			String patientName = "Sol Badguy";
+			String patientTHC = "1";
+			String visitSN = "3";
+			String visitDate = "1998-05-14";
+			AudiologyViewer av = new AudiologyViewer(patientName, patientTHC, visitSN, visitDate);
+			AudiologyController ac = new AudiologyController(av);
 		}
 	}
 }

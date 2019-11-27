@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
 public class PatientSearchViewer {
 	
 	private final int TEXTFIELD_WIDTH = 20;
-	private JButton editButton = new JButton("Edit");
+	private JButton addAudiologyButton = new JButton("Add Audiology to Current Visit");
 	private JButton searchButton = new JButton("Search");
 	private JTextField patientTHCTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField firstNameTField = new JTextField(TEXTFIELD_WIDTH);
@@ -76,16 +76,16 @@ public class PatientSearchViewer {
 		
 		dialog.add(searchPanel, BorderLayout.PAGE_START);
 		dialog.add(tableScrollPane, BorderLayout.CENTER);
-		dialog.add(editButton, BorderLayout.PAGE_END);
+		dialog.add(addAudiologyButton, BorderLayout.PAGE_END);
 		
 		dialog.pack();
 		dialog.setVisible(true);
 		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 	
-	public void addEditButtonAction(ActionListener al)
+	public void addAddAudiologyButtonAction(ActionListener al)
 	{
-		editButton.addActionListener(al);
+		addAudiologyButton.addActionListener(al);
 	}
 	
 	public void addSearchButtonAction(ActionListener al)
