@@ -21,6 +21,10 @@ public class MainWindowViewer {
 	private JButton editPatientButton = new JButton("View/edit an existing patient");
 	private JButton returnPatientButton = new JButton("Go back");
 	
+	private JButton createVisitAppButton = new JButton("Make a Visit");
+	private JButton editVisitButton = new JButton("View/Edit Visit");
+	private JButton returnVisitButton = new JButton("Main Menu");
+	
 	public MainWindowViewer()
 	{
 		JPanel eTRTCard = new JPanel();
@@ -39,13 +43,13 @@ public class MainWindowViewer {
 //		createPatientButton.addActionListener(new CreatePatientActionListener());
 		
 		JPanel visitCard = new JPanel();
+		visitCard.add(createVisitAppButton);
+		visitCard.add(editVisitButton);
+		visitCard.add(returnVisitButton);
 		
 		cards.add(eTRTCard, ETRT_CARD);
 		cards.add(patientCard, PATIENT_CARD);
 		cards.add(visitCard, VISIT_CARD);
-		
-		
-		
 		
 		frame.add(cards);
 		
@@ -99,5 +103,18 @@ public class MainWindowViewer {
 	}
 	
 	//adds actions to the Visit menu button
+	public void addVisitAppButtonAction(ActionListener al)
+	{
+		createVisitAppButton.addActionListener(al);
+	}
 	
+	public void addEditVisitButtonAction(ActionListener al)
+	{
+		editVisitButton.addActionListener(al);
+	}
+
+	public void addReturVisitButtonAction(ActionListener al)
+	{
+		returnVisitButton.addActionListener(al);
+	}
 }

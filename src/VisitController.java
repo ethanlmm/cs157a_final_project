@@ -16,10 +16,13 @@ public class VisitController
 		public void actionPerformed(ActionEvent visit)
 		{
 			int visitId = view.getVisitId();
-			int appointDate = view.getAppDate();
+			int appointDate = view.getVisitDate();
 			String patientName = view.getFullName();
 			int thcID = view.getTHCid();
 			int visitNum = view.getVisitNum();
+			String problemText = view.getProblemText();
+			String categoryText = view.getCategoryText();
+			String 
 		}
 	}
 }
