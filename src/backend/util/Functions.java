@@ -1,6 +1,6 @@
-package util;
+package backend.util;
 
-import Function.*;
+import backend.function.*;
 
 public class Functions {
     //[re-defined function

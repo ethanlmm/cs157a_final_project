@@ -21,7 +21,7 @@ class SimpleJDBC
     	    Connection conn =
     	      DriverManager.getConnection
 
-					("jdbc:mysql://2601:646:8500:ffa0:d87c:177a:848d:625b:3306/project","Ethan_Lin", "Asdfg9716");
+					("jdbc:mysql://localhost:3306/TEST","root", "2147483647");
 
 
     // Create a Statement

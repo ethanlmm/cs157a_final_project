@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class DBConnector {
-	
+
+
+
 	//change this when you test
-	public static String USERNAME = new String("TestUser");
-	public static String PASSWORD = new String("eevee");
+	public static String USERNAME = new String("root");
+	public static String PASSWORD = new String("2147483647");
 	public static String DB_URL = new String("jdbc:mysql://localhost:3306/mydb");
 	public static String JDBC_DRIVER = new String("com.mysql.cj.jdbc.Driver");
 	

@@ -50,9 +50,9 @@ public class SQLUtil
 	* Very similar to printSQLExceptions.
 	* @param warn The list of SQLWarnings.
 	* @return true if a warning existed, false otherwise.
-	* @exception  SQLException.
+	* @exception  SQLException
 	* @see Utils#printSQLExceptions
-	* @exception SQLException.
+	* @exception SQLException;
 	*/
 	static public boolean 
 	printSQLWarnings(SQLWarning warn)

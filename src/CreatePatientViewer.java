@@ -1,11 +1,5 @@
-import Function.F;
-import util.Util;
-
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import static util.StatementMaker.*;
-import static util.Util.*;
 import javax.swing.*;
 
 public class CreatePatientViewer {
