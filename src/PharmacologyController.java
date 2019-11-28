@@ -27,15 +27,18 @@ public class PharmacologyController {
 			{
 				//get an array of changed columns in each changed row
 				Integer[] changedCols = viewer.getChangedCols(changedRows[i]);
+				System.out.println("NUM COLS " + changedCols.length);
 					for (int j = 0; j < changedCols.length; j++)
 					{
 						//TODO: DB Operations to insert into table
-						//use this to get the table contents
+						//System.out.println("There is a change at " + changedRows[i] + ", " + changedCols[j]);
+						//use getTableContents to get the table contents
 						//viewer.getTableContentsAt(row, col)
 						//returns an Object, so cast it appropriately
-						
 						//DB Operations go here
-						System.out.println("There is a change at " + i + ", " + j);
+						//INSERT INTO table (col1, col2) VALUES (val1, val2);
+						
+						
 					}
 				
 			}

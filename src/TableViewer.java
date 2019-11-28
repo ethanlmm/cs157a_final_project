@@ -38,14 +38,6 @@ public class TableViewer extends Viewer{
 	{
 		return table;
 	}
-<<<<<<< HEAD
-
-	public class TableListener implements TableModelListener
-	{
-		private JTable table;
-		private HashMap<Integer, ArrayList<Object>> changes;
-
-=======
 	
 	public void clearChanges()
 	{
@@ -74,7 +66,6 @@ public class TableViewer extends Viewer{
 		private JTable table;
 		private HashMap<Integer, HashSet<Integer>> changes;
 		
->>>>>>> 362883eb264b947b395e02755ca1367e587b76d7
 		public TableListener()
 		{
 			changes = new HashMap<Integer, HashSet<Integer>>();
@@ -90,31 +81,6 @@ public class TableViewer extends Viewer{
 		{
 			this.table = table;
 		}
-<<<<<<< HEAD
-
-		public void tableChanged(TableModelEvent e) {
-			if (e.getType() == TableModelEvent.UPDATE)
-			{
-//
-				int row = e.getFirstRow();
-				int col = e.getColumn();
-
-				System.out.print("Change at ");
-				System.out.println(getTableContents(row, col));
-			}
-		}
-
-		public void clearChanges()
-		{
-			changes.clear();
-		}
-
-		public Object getTableContents(int row, int col)
-		{
-			return table.getModel().getValueAt(row, col);
-		}
-
-=======
 		
 		
 		
@@ -124,7 +90,7 @@ public class TableViewer extends Viewer{
 				int row = e.getFirstRow();
 				int col = e.getColumn();
 				
-				System.out.println("Changed at " + row);
+//				System.out.println("Changed at " + row);
 				
 				if (!changes.containsKey(row))
 				{
@@ -139,28 +105,6 @@ public class TableViewer extends Viewer{
 			}
 		}
 		
-//		public Integer[] getChangedRows()
-//		{
-//			return changes.keySet().toArray(new Integer[changes.size()]);
-//		}
-		
-//		public Integer[] getChangedCols(int row)
-//		{
-//			HashSet<Integer> changedCols = changes.get(row);
-//			return changedCols.toArray(new Integer[changedCols.size()]);
-//		}
-		
-//		public void clearChanges()
-//		{
-//			changes.clear();
-//		}
-		
-//		public Object getTableContents(int row, int col)
-//		{
-//			return table.getModel().getValueAt(row, col);
-//		}
-		
->>>>>>> 362883eb264b947b395e02755ca1367e587b76d7
 	}
 
 
