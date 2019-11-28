@@ -19,7 +19,7 @@ public class AudiologyViewer extends Viewer{
 	
 	private JButton saveButton = new JButton("Save");
 	private JButton cancelButton = new JButton("Cancel");
-	
+	public String patientTHC;
 	private static String[] T_XmInputs = new String[] {"PT","NB","NBN","WN"};
 	
 	private JTextField ptalTField = new JTextField(TEXTFIELD_WIDTH);
@@ -46,7 +46,7 @@ public class AudiologyViewer extends Viewer{
 	private JTextField commentsTField = new JTextField(TEXTFIELD_WIDTH);
 	
 	public AudiologyViewer(String patientName, String patientTHC, String visitSN, String visitDate)
-	{
+	{ this.patientTHC=patientTHC;
 		JDialog dialog = new JDialog();
 		dialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 		dialog.setLayout(new BorderLayout());
@@ -56,6 +56,7 @@ public class AudiologyViewer extends Viewer{
 		//Patient’s THC#.
 		//Visit’s sequence number for the patient.
 		//Visit’s Date.
+
 		JLabel nameLabel = new JLabel("Name: " + patientName);
 		JLabel patientTHCLabel = new JLabel("Patient THC: " + patientTHC);
 		JLabel visitSNLabel = new JLabel("Visit SN: " + visitSN);

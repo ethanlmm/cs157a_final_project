@@ -1,5 +1,10 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import static backend.Connector.update;
+import static backend.StatementMaker.INSERT_STATEMENT;
+import static backend.util.Util.*;
 
 public class AudiologyController {
 	
@@ -34,32 +39,42 @@ public class AudiologyController {
 			//alternatively you get use the other get____() functions
 			//but just know there are 19 of them, so pick your poison
 			//I'm so sorry...
-			
-			Object[] fields = viewer.getAllFields();
 
-			//or...
-			
-//			int Ptal = getPtal();
-//			int T_pl = getT_pl();
-//			String T_lm = getT_lm();
-//			int T_ll = getT_ll();
-//			int Th_l = getTh_l();
-//			int Wnl = getWnl();
-//			String Mml = getMml();
-//			int Lsd = getLsd();
-//			int Pt_ldl = getPt_ldl();
-//			int Ptar = getPtar();
-//			int T_pr = getT_pr();
-//			String T_rm = getT_rm();
-//			int T_lr = getT_lr();
-//			int Th_r = getTh_r();
-//			int Wnr = getWnr();
-//			String Mmr = getMmr();
-//			int Rsd = getRsd();
-//			int Pt_rdl = getPt_rdl();
-//			String Comments = getComments();
+			String T_pl =""+viewer.getT_pl();
+			String T_lm = viewer.getT_lm();
+			String T_ll =""+ viewer.getT_ll();
+			String Th_l =""+viewer. getTh_l();
+			String Wnl = ""+viewer.getWnl();
+			String Mml =viewer. getMml();
+			String Lsd = ""+viewer.getLsd();
+			String Pt_ldl = ""+viewer.getPt_ldl();
+			String Ptar =""+ viewer.getPtar();
+			String Ptal=""+viewer.getPtal();
+			String T_pr =""+ viewer.getT_pr();
+			String T_rm = viewer.getT_rm();
+			String T_lr = ""+viewer.getT_lr();
+			String Th_r =""+ viewer.getTh_r();
+			String Wnr =""+ viewer.getWnr();
+			String Mmr = viewer.getMmr();
+			String Rsd = ""+viewer.getRsd();
+			String Pt_rdl =""+ viewer.getPt_rdl();
+			String Comments = viewer.getComments();
 
-			
+			String where=str("\"THC_num\"","=",viewer.patientTHC);
+			String statement = INSERT_STATEMENT("Audiology", arr("Visit_visit_id","pta_Right", "pta_Left", "right_TRP", "right_TRm", "right_TLR", "right_ThR", "left_TLP", "left_TLm","left_TLL","left_ThL","WNR","WNL","mml_Right","mml_Left","RSD","LSD","pt_LDL_Right","pt_LDL_Left","comments"),
+					,arr(""+str(T_pl,T_lm,T_ll).hashCode(),Ptar, Ptal, "0", "0", "0", "0", "0", "0","0","0","0","0","0","0","0","0","0","0","comments"),where);
+			print(statement);
+			try {
+				update(statement);
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+
+
+
+
+	
+
 
 		}
 	}
