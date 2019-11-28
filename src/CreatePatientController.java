@@ -22,7 +22,7 @@ public class CreatePatientController {
 			String streetAddress = view.getStreetAddress();
 			String zipcode = view.getZipcode();
 			String city = view.getCity();
-			String dobMonth = view.getBdayMonth();
+			int dobMonth = view.getBdayMonth();
 			int dobDay = view.getBdayDay();
 			int dobYear = view.getBdayYear();
 			String sex = view.getSex();
@@ -49,7 +49,6 @@ public class CreatePatientController {
 			System.out.println("dobYear " + dobYear);
 			System.out.println("sex " + sex);
 			System.out.println("phone " + phone);
-			
 		}
 		
 	}
