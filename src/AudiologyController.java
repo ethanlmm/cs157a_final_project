@@ -60,9 +60,9 @@ public class AudiologyController {
 			String Pt_rdl =""+ viewer.getPt_rdl();
 			String Comments = viewer.getComments();
 
-			String where=str("\"THC_num\"","=",viewer.patientTHC);
+			String where=str("\"THC_num\"","=",""+viewer.patientTHC);
 			String statement = INSERT_STATEMENT("Audiology", arr("Visit_visit_id","pta_Right", "pta_Left", "right_TRP", "right_TRm", "right_TLR", "right_ThR", "left_TLP", "left_TLm","left_TLL","left_ThL","WNR","WNL","mml_Right","mml_Left","RSD","LSD","pt_LDL_Right","pt_LDL_Left","comments"),
-					,arr(""+str(T_pl,T_lm,T_ll).hashCode(),Ptar, Ptal, "0", "0", "0", "0", "0", "0","0","0","0","0","0","0","0","0","0","0","comments"),where);
+					arr(""+str(T_pl,T_lm,T_ll).hashCode(),Ptar, Ptal, "0", "0", "0", "0", "0", "0","0","0","0","0","0","0","0","0","0","0","comments"));
 			print(statement);
 			try {
 				update(statement);
@@ -73,7 +73,7 @@ public class AudiologyController {
 
 
 
-	
+
 
 
 		}
