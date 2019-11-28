@@ -148,4 +148,11 @@ public class PatientSearchController {
 			viewer.close();
 		}
 	}
+	
+	private class SaveButtonActionListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) {
+			
+		}
+	}
 }

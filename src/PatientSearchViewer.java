@@ -24,6 +24,7 @@ public class PatientSearchViewer extends TableViewer{
 	private JButton addAudiologyButton = new JButton("Add Audiology to Current Visit");
 	private JButton searchButton = new JButton("Search");
 	private JButton closeButton = new JButton("Close");
+	private JButton saveButton = new JButton("Save");
 	private JTextField patientTHCTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField firstNameTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
@@ -78,6 +79,7 @@ public class PatientSearchViewer extends TableViewer{
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.add(addAudiologyButton);
+		buttonPanel.add(saveButton);
 		buttonPanel.add(closeButton);
 		
 		dialog = new JDialog();
@@ -106,6 +108,11 @@ public class PatientSearchViewer extends TableViewer{
 	public void addCloseButtonAction(ActionListener al)
 	{
 		closeButton.addActionListener(al);
+	}
+	
+	public void addSaveButtonAction(ActionListener al)
+	{
+		saveButton.addActionListener(al);
 	}
 	
 	public String getPatientTHC()

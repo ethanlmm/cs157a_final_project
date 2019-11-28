@@ -48,8 +48,7 @@ public class VisitViewer extends TableViewer
 		dialog.add(thcLabel, constraints);
 
 		JLabel visitLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		monthSpinner.setModel(new SpinnerListModel(months));
+		monthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
 		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
 		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
 		JPanel visitPanel = new JPanel();
