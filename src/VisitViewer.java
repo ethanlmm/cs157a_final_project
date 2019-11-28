@@ -37,25 +37,34 @@ public class VisitViewer extends TableViewer
 		GridBagConstraints constraints = new GridBagConstraints();
 		constraints.fill = GridBagConstraints.HORIZONTAL;
 
-		JLabel dobLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		monthSpinner.setModel(new SpinnerListModel(months));
-		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
-		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
-		JPanel dobPanel = new JPanel();
-		dobPanel.add(monthSpinner);
-		dobPanel.add(daySpinner);
-		dobPanel.add(yearSpinner);
+		JLabel thcLabel = new JLabel("THC Number:", SwingConstants.RIGHT);
+		thcNUM.setHorizontalAlignment(JTextField.RIGHT);
+		constraints.gridx = 0;
+		constraints.gridy = 0;
+		dialog.add(thcLabel, constraints);
+		constraints.gridx = 1;
+		constraints.gridy = 0;
+		dialog.add(thcLabel, constraints);
 
-		JLabel dobLabel = new JLabel("Next Visit Date:", SwingConstants.RIGHT);
+		JLabel visitLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
 		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		monthSpinner.setModel(new SpinnerListModel(months));
 		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
 		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
-		JPanel dobPanel = new JPanel();
-		dobPanel.add(monthSpinner);
-		dobPanel.add(daySpinner);
-		dobPanel.add(yearSpinner);
+		JPanel visitPanel = new JPanel();
+		visitPanel.add(monthSpinner);
+		visitPanel.add(daySpinner);
+		visitPanel.add(yearSpinner);
+
+		JLabel nextVisitLabel = new JLabel("Next Visit Date:", SwingConstants.RIGHT);
+		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		monthSpinner.setModel(new SpinnerListModel(months));
+		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
+		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
+		JPanel nextVisitLabelPanel = new JPanel();
+		nextVisitLabelPanel.add(monthSpinner);
+		nextVisitLabelPanel.add(daySpinner);
+		nextVisitLabelPanel.add(yearSpinner);
 
 		constraints.gridx = 1;
 		constraints.gridy = 4;
