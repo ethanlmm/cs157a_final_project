@@ -23,6 +23,7 @@ public class PatientSearchViewer extends TableViewer{
 	private final int TEXTFIELD_WIDTH = 20;
 	private JButton addAudiologyButton = new JButton("Add Audiology to Current Visit");
 	private JButton searchButton = new JButton("Search");
+	private JButton closeButton = new JButton("Close");
 	private JTextField patientTHCTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField firstNameTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
@@ -74,13 +75,18 @@ public class PatientSearchViewer extends TableViewer{
 		
 		searchPanel.add(searchButton);
 		
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.add(addAudiologyButton);
+		buttonPanel.add(closeButton);
+		
 		dialog = new JDialog();
 		dialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 		dialog.setLayout(new BorderLayout());
 		
 		dialog.add(searchPanel, BorderLayout.PAGE_START);
 		dialog.add(tableScrollPane, BorderLayout.CENTER);
-		dialog.add(addAudiologyButton, BorderLayout.PAGE_END);
+		dialog.add(buttonPanel, BorderLayout.PAGE_END);
 		
 		dialog.pack();
 		dialog.setVisible(true);
@@ -95,6 +101,11 @@ public class PatientSearchViewer extends TableViewer{
 	public void addSearchButtonAction(ActionListener al)
 	{
 		searchButton.addActionListener(al);
+	}
+	
+	public void addCloseButtonAction(ActionListener al)
+	{
+		closeButton.addActionListener(al);
 	}
 	
 	public String getPatientTHC()
@@ -115,6 +126,11 @@ public class PatientSearchViewer extends TableViewer{
 	public String getPhone()
 	{
 		return phoneTField.getText();
+	}
+	
+	public void close()
+	{
+		dialog.dispose();
 	}
 	
 }

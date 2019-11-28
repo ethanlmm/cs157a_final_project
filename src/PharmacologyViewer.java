@@ -37,10 +37,12 @@ public class PharmacologyViewer extends TableViewer{
 	
 //	private JTable table;
 	
+	private JDialog dialog = new JDialog();
+	
 	public PharmacologyViewer(String patientName, String patientTHC, String visitSN, String visitDate)
 	{
-		super();
-		JDialog dialog = new JDialog();
+//		super();
+		
 		dialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 		dialog.setLayout(new BorderLayout());
 		
@@ -94,7 +96,10 @@ public class PharmacologyViewer extends TableViewer{
 		cancelButton.addActionListener(al);
 	}
 	
-	
+	public void close()
+	{
+		dialog.dispose();
+	}
 	
 	
 
