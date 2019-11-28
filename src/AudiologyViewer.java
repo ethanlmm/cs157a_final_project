@@ -22,21 +22,28 @@ public class AudiologyViewer extends Viewer{
 	
 	private static String[] T_XmInputs = new String[] {"PT","NB","NBN","WN"};
 	
-	private JTextField L25TField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField T_PLTField = new JTextField(TEXTFIELD_WIDTH);
-	private JComboBox T_LmComboBox = new JComboBox(T_XmInputs);
-	private JTextField T_LLTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField Th_LTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField T_LsTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField WNLTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField MRLTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField MLBTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField MBLTField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField L_SDTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField ptalTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField t_plTField = new JTextField(TEXTFIELD_WIDTH);
+	private JComboBox t_lmComboBox = new JComboBox(T_XmInputs);
+	private JTextField t_llTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField th_lTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField wnlTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField mmlTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField lsdTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField pt_ldlTField = new JTextField(TEXTFIELD_WIDTH);
 	
-	private JTextField R25TField = new JTextField(TEXTFIELD_WIDTH);
-	private JTextField T_PRTField = new JTextField(TEXTFIELD_WIDTH);
-	private JComboBox T_RmComboBox = new JComboBox(T_XmInputs);
+	
+	private JTextField ptarTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField t_prTField = new JTextField(TEXTFIELD_WIDTH);
+	private JComboBox t_rmComboBox = new JComboBox(T_XmInputs);
+	private JTextField t_lrTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField th_rTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField wnrTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField mmrTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField rsdTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField pt_rdlTField = new JTextField(TEXTFIELD_WIDTH);
+	
+	private JTextField commentsTField = new JTextField(TEXTFIELD_WIDTH);
 	
 	public AudiologyViewer(String patientName, String patientTHC, String visitSN, String visitDate)
 	{
@@ -66,33 +73,39 @@ public class AudiologyViewer extends Viewer{
 //		gbc.gridwidth = GridBagConstraints.REMAINDER;
 //		leftPanel.setLayout(new GridBagLayout());
 		
-		leftPanel.add(convertToPanel("L25", L25TField));
-		leftPanel.add(convertToPanel("T_PL", T_PLTField));
-		leftPanel.add(convertToPanel("T_Lm", T_LmComboBox));
-		leftPanel.add(convertToPanel("T_LL", T_LLTField));
-		leftPanel.add(convertToPanel("Th_L", Th_LTField));
-		leftPanel.add(convertToPanel("WNL", WNLTField));
-		leftPanel.add(convertToPanel("MRL", MRLTField));
-		leftPanel.add(convertToPanel("MLB", MLBTField));
-		leftPanel.add(convertToPanel("MBL", MBLTField));
-		leftPanel.add(convertToPanel("L_SD", L_SDTField));
+		leftPanel.add(convertToPanel("L25", ptalTField));
+		leftPanel.add(convertToPanel("T_PL", t_plTField));
+		leftPanel.add(convertToPanel("T_Lm", t_lmComboBox));
+		leftPanel.add(convertToPanel("T_LL", t_llTField));
+		leftPanel.add(convertToPanel("Th_L", th_lTField));
+		leftPanel.add(convertToPanel("WNL", wnlTField));
+		leftPanel.add(convertToPanel("MML", mmlTField));
+		leftPanel.add(convertToPanel("LSD", lsdTField));
+		leftPanel.add(convertToPanel("PT_LD", pt_ldlTField));
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-		rightPanel.add(convertToPanel("R25", R25TField));
-		rightPanel.add(convertToPanel("T_PR", T_PRTField));
-		rightPanel.add(convertToPanel("T_Rm", T_RmComboBox));
-//		leftPanel.add(convertToPanel("T_LL", T_LLTField));
-//		leftPanel.add(convertToPanel("Th_L", Th_LTField));
-//		leftPanel.add(convertToPanel("WNL", WNLTField));
-//		leftPanel.add(convertToPanel("MRL", MRLTField));
-//		leftPanel.add(convertToPanel("MLB", MLBTField));
-//		leftPanel.add(convertToPanel("MBL", MBLTField));
-//		leftPanel.add(convertToPanel("L_SD", L_SDTField));
+		rightPanel.add(convertToPanel("R25", ptarTField));
+		rightPanel.add(convertToPanel("T_PR", t_prTField));
+		rightPanel.add(convertToPanel("T_Rm", t_rmComboBox));
+		rightPanel.add(convertToPanel("T_LR", t_lrTField));
+		rightPanel.add(convertToPanel("Th_R", th_rTField));
+		rightPanel.add(convertToPanel("WNR", wnrTField));
+		rightPanel.add(convertToPanel("MMR", mmrTField));
+		rightPanel.add(convertToPanel("RSD", rsdTField));
+		rightPanel.add(convertToPanel("PT_RD", pt_rdlTField));
 		
 		JPanel lowerPanel = new JPanel();
-		lowerPanel.add(saveButton);
-		lowerPanel.add(cancelButton);
+		lowerPanel.setLayout(new BorderLayout());
+		JPanel topLowerPanel = new JPanel();
+		topLowerPanel.add(convertToPanel("Comments:", commentsTField));
+		JPanel botLowerPanel = new JPanel();
+		botLowerPanel.add(saveButton);
+		botLowerPanel.add(cancelButton);
+//		lowerPanel.add(saveButton);
+//		lowerPanel.add(cancelButton);
+		lowerPanel.add(topLowerPanel, BorderLayout.PAGE_START);
+		lowerPanel.add(botLowerPanel,BorderLayout.PAGE_END);
 		
 		dialog.add(upperPanel, BorderLayout.PAGE_START);
 		dialog.add(leftPanel, BorderLayout.LINE_START);
@@ -112,6 +125,90 @@ public class AudiologyViewer extends Viewer{
 	public void addCancelButtonAction(ActionListener al)
 	{
 		cancelButton.addActionListener(al);
+	}
+
+	public int getPtal() {
+		return Integer.parseInt(ptalTField.getText());
+	}
+
+	public int getT_pl() {
+		return Integer.parseInt(t_plTField.getText());
+	}
+
+	public String getT_lm() {
+		return t_lmComboBox.getSelectedItem().toString();
+	}
+
+	public int getT_ll() {
+		return Integer.parseInt(t_llTField.getText());
+	}
+
+	public int getTh_l() {
+		return Integer.parseInt(th_lTField.getText());
+	}
+
+	public int getWnl() {
+		return Integer.parseInt(wnlTField.getText());
+	}
+
+	public String getMml() {
+		return mmlTField.getText();
+	}
+
+	public int getLsd() {
+		return Integer.parseInt(lsdTField.getText());
+	}
+
+	public int getPt_ldl() {
+		return Integer.parseInt(pt_ldlTField.getText());
+	}
+
+	public int getPtar() {
+		return Integer.parseInt(ptarTField.getText());
+	}
+
+	public int getT_pr() {
+		return Integer.parseInt(t_prTField.getText());
+	}
+
+	public String getT_rm() {
+		return t_rmComboBox.getSelectedItem().toString();
+	}
+
+	public int getT_lr() {
+		return Integer.parseInt(t_lrTField.getText());
+	}
+
+	public int getTh_r() {
+		return Integer.parseInt(th_rTField.getText());
+	}
+
+	public int getWnr() {
+		return Integer.parseInt(wnrTField.getText());
+	}
+
+	public String getMmr() {
+		return mmrTField.getText();
+	}
+
+	public int getRsd() {
+		return Integer.parseInt(rsdTField.getText());
+	}
+
+	public int getPt_rdl() {
+		return Integer.parseInt(pt_rdlTField.getText());
+	}
+
+	public String getComments() {
+		return commentsTField.getText();
+	}
+	
+	public Object[] getAllFields()
+	{
+		Object[] fields = new Object[] { getPtal(), getT_pl(), getT_lm(), getT_ll(), getTh_l(), 
+				getWnl(), getMml(), getLsd(), getPt_ldl(), getPtar(), getT_pr(), getT_rm(), 
+				getT_lr(), getTh_r(), getWnr(), getMmr(), getRsd(), getPt_rdl(), getComments()};
+		return fields;
 	}
 
 }
