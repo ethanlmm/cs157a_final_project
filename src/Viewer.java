@@ -1,4 +1,5 @@
 import javax.swing.JComponent;
+import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -16,5 +17,5 @@ public class Viewer {
 		panel.add(component);
 		return panel;
 	}
-
+	
 }
