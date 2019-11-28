@@ -16,7 +16,10 @@ public class AudiologyController {
 	{
 		public void actionPerformed(ActionEvent e) {
 			//add save button actions
-			//save to database
+			//get the changes to the table (might use a hashmap to send this)
+			//and convert it or send it to the right class to save to database
+			//will need to do a sql operation like this
+			//UPDATE table SET col1 = val1, col2 = val3 WHERE id = id;
 		}
 	}
 	
@@ -26,6 +29,7 @@ public class AudiologyController {
 		{
 			//add cancel button actions
 			//don't save to database, go back to prev window
+			//clear the changes and close the dialog
 		}
 	}
 

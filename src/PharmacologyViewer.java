@@ -10,13 +10,18 @@ import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.WindowConstants;
+import javax.swing.table.DefaultTableModel;
 
-public class AudiologyViewer extends Viewer{
+public class PharmacologyViewer extends TableViewer{
 	
 	private final int TEXTFIELD_WIDTH = 20;
 	
+	private JButton addMedication = new JButton("Add Medication");
 	private JButton saveButton = new JButton("Save");
 	private JButton cancelButton = new JButton("Cancel");
 	
@@ -30,8 +35,11 @@ public class AudiologyViewer extends Viewer{
 	private JTextField T_PRTField = new JTextField(TEXTFIELD_WIDTH);
 	private JComboBox T_RmComboBox = new JComboBox(T_XmInputs);
 	
-	public AudiologyViewer(String patientName, String patientTHC, String visitSN, String visitDate)
+//	private JTable table;
+	
+	public PharmacologyViewer(String patientName, String patientTHC, String visitSN, String visitDate)
 	{
+		super();
 		JDialog dialog = new JDialog();
 		dialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
 		dialog.setLayout(new BorderLayout());
@@ -50,30 +58,25 @@ public class AudiologyViewer extends Viewer{
 		upperPanel.add(visitSNLabel);
 		upperPanel.add(visitDateLabel);
 		
-		JPanel leftPanel = new JPanel();
-		leftPanel.setLayout(new BoxLayout(leftPanel, BoxLayout.Y_AXIS));
-//		GridBagConstraints gbc = new GridBagConstraints();
-//		gbc.fill = GridBagConstraints.HORIZONTAL;
-//		gbc.weightx = 1;
-//		gbc.gridwidth = GridBagConstraints.REMAINDER;
-//		leftPanel.setLayout(new GridBagLayout());
-		leftPanel.add(convertToPanel("L25", L25TField));
-		leftPanel.add(convertToPanel("T_PL", T_PLTField));
-		leftPanel.add(convertToPanel("T_Lm", T_LmComboBox));
+		JPanel middlePanel = new JPanel();
+//		DefaultTableModel model = new DefaultTableModel(new String[] {"First Name", "Last Name"}, 0);
+//		model.addRow(new String[] {"pls buff", "May"});
+//		model.addRow(new String[] {"Lilica", "Felchenerow"});
+//		model.addRow(new String[] {"Lucky", "Chloe"});
+//		model.addRow(new String[] {"Makoto", "Nanaya"});
+//		model.addRow(new String[] {"french bread pls giv", "Kaguya"});
+//		table = new JTable(model);
+		JScrollPane tableScrollPane = new JScrollPane(getTable());
 		
-		JPanel rightPanel = new JPanel();
-		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
-		rightPanel.add(convertToPanel("R25", R25TField));
-		rightPanel.add(convertToPanel("T_PR", T_PRTField));
-		rightPanel.add(convertToPanel("T_Rm", T_RmComboBox));
+//		table.changeSelection(0, 0, false, false);
+		middlePanel.add(tableScrollPane);
 		
 		JPanel lowerPanel = new JPanel();
 		lowerPanel.add(saveButton);
 		lowerPanel.add(cancelButton);
 		
 		dialog.add(upperPanel, BorderLayout.PAGE_START);
-		dialog.add(leftPanel, BorderLayout.LINE_START);
-		dialog.add(rightPanel, BorderLayout.LINE_END);
+		dialog.add(middlePanel, BorderLayout.CENTER);
 		dialog.add(lowerPanel, BorderLayout.PAGE_END);
 		
 		dialog.pack();
@@ -90,5 +93,9 @@ public class AudiologyViewer extends Viewer{
 	{
 		cancelButton.addActionListener(al);
 	}
+	
+	
+	
+	
 
 }

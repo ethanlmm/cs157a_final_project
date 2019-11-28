@@ -115,12 +115,29 @@ public class PatientSearchController {
 	{
 		public void actionPerformed(ActionEvent e)
 		{
-			String patientName = "Sol Badguy";
-			String patientTHC = "1";
+			//get relevant patient info from viewer
+			//then use it to pass into another viewer
+			//right now this button opens two things,
+			//but that's just for testing
+			//will split that later.
+			//Check the audiology and pharmacology controllers to see
+			//what db functions need to be implemented.
+			
+//			String patientName = "Sol Badguy";
+//			String patientTHC = "1";
+//			String visitSN = "3";
+//			String visitDate = "1998-05-14";
+			
+			String patientName = (String)viewer.getTableRowContents(1) + " " + (String)viewer.getTableRowContents(2);
+			String patientTHC = Integer.toString((Integer)viewer.getTableRowContents(0));
 			String visitSN = "3";
 			String visitDate = "1998-05-14";
+			
 			AudiologyViewer av = new AudiologyViewer(patientName, patientTHC, visitSN, visitDate);
 			AudiologyController ac = new AudiologyController(av);
+				
+			PharmacologyViewer pv = new PharmacologyViewer(patientName, patientTHC, visitSN, visitDate);
+			PharmacologyController pc = new PharmacologyController(pv);
 		}
 	}
 }

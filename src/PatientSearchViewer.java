@@ -11,13 +11,14 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
 
-public class PatientSearchViewer {
+public class PatientSearchViewer extends TableViewer{
 	
 	private final int TEXTFIELD_WIDTH = 20;
 	private JButton addAudiologyButton = new JButton("Add Audiology to Current Visit");
@@ -27,11 +28,12 @@ public class PatientSearchViewer {
 	private JTextField lastNameTField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField phoneTField = new JTextField(TEXTFIELD_WIDTH);
 	
-	private JTable table;
+//	private JTable table;
 	private JDialog dialog;
 	
 	public PatientSearchViewer()
 	{
+		super();
 		DefaultTableModel model = new DefaultTableModel(new String[] {"First Name", "Last Name"}, 0);
 		
 		model.addRow(new String[] {"pls buff", "May"});
@@ -41,10 +43,12 @@ public class PatientSearchViewer {
 		model.addRow(new String[] {"french bread pls giv", "Kaguya"});
 		
 		
-		table = new JTable(model);
-		JScrollPane tableScrollPane = new JScrollPane(table);
-		table.setFillsViewportHeight(true);
-		table.setAutoCreateRowSorter(true);
+//		table = new JTable(model);
+		JScrollPane tableScrollPane = new JScrollPane(getTable());
+//		table.setFillsViewportHeight(true);
+//		table.setAutoCreateRowSorter(true);
+//		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		table.changeSelection(0, 0, false, false);
 		
 		JPanel searchPanel = new JPanel();
 		
@@ -91,11 +95,6 @@ public class PatientSearchViewer {
 	public void addSearchButtonAction(ActionListener al)
 	{
 		searchButton.addActionListener(al);
-	}
-	
-	public void setTable(DefaultTableModel model)
-	{
-		table.setModel(model);
 	}
 	
 	public String getPatientTHC()
