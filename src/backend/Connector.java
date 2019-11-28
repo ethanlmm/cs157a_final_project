@@ -1,9 +1,9 @@
-package backend.util;
+package backend;
 
 import java.sql.*;
 
 public class Connector {
-    static String default_addr="jdbc:mysql://localhost:3306/TEST";
+    static String default_addr="jdbc:mysql://localhost:3306/mydb";;
     static String default_user="root";
     static String default_password="2147483647";
 
