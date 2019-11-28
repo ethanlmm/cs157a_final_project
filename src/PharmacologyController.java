@@ -18,8 +18,8 @@ public class PharmacologyController {
 
 		public void actionPerformed(ActionEvent e) {
 			//get the fields from the viewer using the textfield getters
-			//and use them to perform a query on the db like
-			//INSERT INTO table (col1, col2) VALUES (val1, val2);
+			//and use them to perform a query on the db like 
+			//UPDATE table SET col1 = val1, col2 = val3 WHERE id = id;
 			
 			//get an array of the index of changed rows
 			Integer[] changedRows = viewer.getChangedRows();
