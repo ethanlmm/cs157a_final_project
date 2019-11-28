@@ -76,8 +76,7 @@ public class CreatePatientViewer {
 		dialog.add(cityTField, constraints);
 		
 		JLabel dobLabel = new JLabel("Date of Birth", SwingConstants.RIGHT);
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		monthSpinner.setModel(new SpinnerListModel(months));
+		monthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
 		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
 		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
 		JPanel dobPanel = new JPanel();
@@ -170,9 +169,9 @@ public class CreatePatientViewer {
 		return (Integer)daySpinner.getValue();
 	}
 	
-	public String getBdayMonth()
+	public int getBdayMonth()
 	{
-		return (String)monthSpinner.getValue();
+		return (Integer)monthSpinner.getValue();
 	}
 	
 	public int getBdayYear()

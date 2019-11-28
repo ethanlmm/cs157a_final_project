@@ -1,6 +1,6 @@
 import static backend.util.Util.*;
-import static backend.util.StatementMaker.*;
-import static backend.util.Connector.*;
+import static backend.StatementMaker.*;
+import static backend.Connector.*;
 import backend.function.*;
 
 import java.sql.ResultSet;

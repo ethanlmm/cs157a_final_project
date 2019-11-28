@@ -25,6 +25,14 @@ public class AudiologyViewer extends Viewer{
 	private JTextField L25TField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField T_PLTField = new JTextField(TEXTFIELD_WIDTH);
 	private JComboBox T_LmComboBox = new JComboBox(T_XmInputs);
+	private JTextField T_LLTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField Th_LTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField T_LsTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField WNLTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField MRLTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField MLBTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField MBLTField = new JTextField(TEXTFIELD_WIDTH);
+	private JTextField L_SDTField = new JTextField(TEXTFIELD_WIDTH);
 	
 	private JTextField R25TField = new JTextField(TEXTFIELD_WIDTH);
 	private JTextField T_PRTField = new JTextField(TEXTFIELD_WIDTH);
@@ -57,15 +65,30 @@ public class AudiologyViewer extends Viewer{
 //		gbc.weightx = 1;
 //		gbc.gridwidth = GridBagConstraints.REMAINDER;
 //		leftPanel.setLayout(new GridBagLayout());
+		
 		leftPanel.add(convertToPanel("L25", L25TField));
 		leftPanel.add(convertToPanel("T_PL", T_PLTField));
 		leftPanel.add(convertToPanel("T_Lm", T_LmComboBox));
+		leftPanel.add(convertToPanel("T_LL", T_LLTField));
+		leftPanel.add(convertToPanel("Th_L", Th_LTField));
+		leftPanel.add(convertToPanel("WNL", WNLTField));
+		leftPanel.add(convertToPanel("MRL", MRLTField));
+		leftPanel.add(convertToPanel("MLB", MLBTField));
+		leftPanel.add(convertToPanel("MBL", MBLTField));
+		leftPanel.add(convertToPanel("L_SD", L_SDTField));
 		
 		JPanel rightPanel = new JPanel();
 		rightPanel.setLayout(new BoxLayout(rightPanel, BoxLayout.Y_AXIS));
 		rightPanel.add(convertToPanel("R25", R25TField));
 		rightPanel.add(convertToPanel("T_PR", T_PRTField));
 		rightPanel.add(convertToPanel("T_Rm", T_RmComboBox));
+//		leftPanel.add(convertToPanel("T_LL", T_LLTField));
+//		leftPanel.add(convertToPanel("Th_L", Th_LTField));
+//		leftPanel.add(convertToPanel("WNL", WNLTField));
+//		leftPanel.add(convertToPanel("MRL", MRLTField));
+//		leftPanel.add(convertToPanel("MLB", MLBTField));
+//		leftPanel.add(convertToPanel("MBL", MBLTField));
+//		leftPanel.add(convertToPanel("L_SD", L_SDTField));
 		
 		JPanel lowerPanel = new JPanel();
 		lowerPanel.add(saveButton);

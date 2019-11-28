@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 public class VisitViewer extends TableViewer
@@ -20,7 +21,7 @@ public class VisitViewer extends TableViewer
 	private JSpinner Problem = new JSpinner();
 	private JSpinner category = new JSpinner();
 	private JTextField protocol = new JTextField(); //assigned random number
-	private JSpinner instrumental = new ();
+	private JSpinner instrumental = new JSpinner();
 	private JCheckBox rem = new JCheckBox();
 	private JSpinner followUp = new JSpinner();
 	private JTextField addCComments = new JTextField(50);
@@ -57,7 +58,7 @@ public class VisitViewer extends TableViewer
 		visitPanel.add(yearSpinner);
 
 		JLabel nextVisitLabel = new JLabel("Next Visit Date:", SwingConstants.RIGHT);
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		//String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		monthSpinner.setModel(new SpinnerListModel(months));
 		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
 		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
@@ -83,16 +84,16 @@ public class VisitViewer extends TableViewer
 
 	public String getVisitDay()
 	{
-		return (Integer)daySpinner.getValue();
+		return ""+daySpinner.getValue();
 	}
 
 	public String getVisitMonth()
 	{
-		return (String)monthSpinner.getValue();
+		return ""+monthSpinner.getValue();
 	}
 
 	public String getVisitYear()
 	{
-		return (Integer)yearSpinner.getValue();
+		return ""+yearSpinner.getValue();
 	}
 }
