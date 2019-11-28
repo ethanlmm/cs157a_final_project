@@ -30,6 +30,13 @@ public class VisitViewer extends TableViewer
 
 	public VisitViewer()
 	{
+		JDialog dialog = new JDialog();
+		dialog.setModalExclusionType(Dialog.ModalExclusionType.APPLICATION_EXCLUDE);
+
+		dialog.setLayout(new GridBagLayout());
+		GridBagConstraints constraints = new GridBagConstraints();
+		constraints.fill = GridBagConstraints.HORIZONTAL;
+
 		JLabel dobLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
 		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		monthSpinner.setModel(new SpinnerListModel(months));
@@ -49,6 +56,15 @@ public class VisitViewer extends TableViewer
 		dobPanel.add(monthSpinner);
 		dobPanel.add(daySpinner);
 		dobPanel.add(yearSpinner);
+
+		constraints.gridx = 1;
+		constraints.gridy = 4;
+		dialog.add(confirmButton, constraints);
+
+		dialog.pack();
+		dialog.setVisible(true);
+
+		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
 	public void addConfirmActionListener(ActionListener al)
