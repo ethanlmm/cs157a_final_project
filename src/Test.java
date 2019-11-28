@@ -24,6 +24,18 @@ public class Test {
         while (results.next())
             print(results.getString (1));
     }
-    }
+//
+//    String where=str("\"THC_num\"","=",""+viewer.getTableContentsAt(changedRows[i],0));
+//    String content=""+viewer.getTableContentsAt(changedRows[i],changedCols[i]);
+//    String column=""+viewer.getTableContentsAt(0,changedCols[i]);
+//    String statement =UPDATE_STATEMENT("PATIENT", arr(column),arr(content),where);
+//    print(statement);
+//						try {
+//        update(statement);
+//    } catch (SQLException ex) {
+//        ex.printStackTrace();
+//    }
+
+}
 
 

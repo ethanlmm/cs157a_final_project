@@ -1,5 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+
+import static backend.Connector.update;
+import static backend.StatementMaker.INSERT_STATEMENT;
+import static backend.StatementMaker.UPDATE_STATEMENT;
+import static backend.util.Util.*;
 
 public class PharmacologyController {
 	
@@ -32,13 +38,24 @@ public class PharmacologyController {
 					{
 						//TODO: DB Operations to insert into table
 						//System.out.println("There is a change at " + changedRows[i] + ", " + changedCols[j]);
+
 						//use getTableContents to get the table contents
 						//viewer.getTableContentsAt(row, col)
 						//returns an Object, so cast it appropriately
 						//DB Operations go here
 						//INSERT INTO table (col1, col2) VALUES (val1, val2);
-						
-						
+						String where=str("\"THC_num\"","=",""+viewer.getTableContentsAt(changedRows[i],0));
+						String content=""+viewer.getTableContentsAt(changedRows[i],changedCols[i]);
+						String column=""+viewer.getTableContentsAt(0,changedCols[i]);
+						String statement =UPDATE_STATEMENT("PATIENT", arr(column),arr(content),where);
+						print(statement);
+						try {
+							update(statement);
+						} catch (SQLException ex) {
+							ex.printStackTrace();
+						}
+
+
 					}
 				
 			}

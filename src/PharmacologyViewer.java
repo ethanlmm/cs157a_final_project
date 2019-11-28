@@ -47,10 +47,10 @@ public class PharmacologyViewer extends TableViewer{
 		dialog.setLayout(new BorderLayout());
 		
 		JPanel upperPanel = new JPanel();
-		//Patient’s name.
-		//Patient’s THC#.
-		//Visit’s sequence number for the patient.
-		//Visit’s Date.
+		//Patientï¿½s name.
+		//Patientï¿½s THC#.
+		//Visitï¿½s sequence number for the patient.
+		//Visitï¿½s Date.
 		JLabel nameLabel = new JLabel("Name: " + patientName);
 		JLabel patientTHCLabel = new JLabel("Patient THC: " + patientTHC);
 		JLabel visitSNLabel = new JLabel("Visit SN: " + visitSN);
@@ -61,7 +61,7 @@ public class PharmacologyViewer extends TableViewer{
 		upperPanel.add(visitDateLabel);
 		
 		JPanel middlePanel = new JPanel();
-//		DefaultTableModel model = new DefaultTableModel(new String[] {"First Name", "Last Name"}, 0);
+		DefaultTableModel model = new DefaultTableModel(new String[] {"First Name", "Last Name"}, 0);
 //		model.addRow(new String[] {"pls buff", "May"});
 //		model.addRow(new String[] {"Lilica", "Felchenerow"});
 //		model.addRow(new String[] {"Lucky", "Chloe"});
