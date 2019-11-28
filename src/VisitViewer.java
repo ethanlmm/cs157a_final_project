@@ -13,9 +13,13 @@ public class VisitViewer extends TableViewer
 	//supposed to be a random num generator
 	private JTextField visitSeqNum = new JTextField(TEXTFIELD_WIDTH);
 
-	private JSpinner monthSpinner = new JSpinner();
-	private JSpinner daySpinner = new JSpinner();
-	private JSpinner yearSpinner = new JSpinner();
+	private JSpinner prevMonthSpinner = new JSpinner();
+	private JSpinner prevDaySpinner = new JSpinner();
+	private JSpinner prevYearSpinner = new JSpinner();
+	
+	private JSpinner nextMonthSpinner = new JSpinner();
+	private JSpinner nextDaySpinner = new JSpinner();
+	private JSpinner nextYearSpinner = new JSpinner();
 
 	private JTextField protocolNum = new JTextField(TEXTFIELD_WIDTH);
 	private JSpinner Problem = new JSpinner();
@@ -48,24 +52,22 @@ public class VisitViewer extends TableViewer
 		dialog.add(thcLabel, constraints);
 
 		JLabel visitLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
-		String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		monthSpinner.setModel(new SpinnerListModel(months));
-		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
-		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
+		prevMonthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
+		prevDaySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
+		prevYearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
 		JPanel visitPanel = new JPanel();
-		visitPanel.add(monthSpinner);
-		visitPanel.add(daySpinner);
-		visitPanel.add(yearSpinner);
+		visitPanel.add(prevMonthSpinner);
+		visitPanel.add(prevDaySpinner);
+		visitPanel.add(prevYearSpinner);
 
 		JLabel nextVisitLabel = new JLabel("Next Visit Date:", SwingConstants.RIGHT);
-		//String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		monthSpinner.setModel(new SpinnerListModel(months));
-		daySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
-		yearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
+		nextMonthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
+		nextDaySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
+		nextYearSpinner.setModel(new SpinnerNumberModel(2000, 1900, 3000, 1));
 		JPanel nextVisitLabelPanel = new JPanel();
-		nextVisitLabelPanel.add(monthSpinner);
-		nextVisitLabelPanel.add(daySpinner);
-		nextVisitLabelPanel.add(yearSpinner);
+		nextVisitLabelPanel.add(nextMonthSpinner);
+		nextVisitLabelPanel.add(nextDaySpinner);
+		nextVisitLabelPanel.add(nextYearSpinner);
 
 		constraints.gridx = 1;
 		constraints.gridy = 4;
@@ -82,18 +84,81 @@ public class VisitViewer extends TableViewer
 		confirmButton.addActionListener(al);
 	}
 
-	public String getVisitDay()
+	public int getPrevVisitDay()
 	{
-		return ""+daySpinner.getValue();
+		return (Integer)prevDaySpinner.getValue();
 	}
 
-	public String getVisitMonth()
+	public int getPrevVisitMonth()
 	{
-		return ""+monthSpinner.getValue();
+		return (Integer)prevMonthSpinner.getValue();
 	}
 
-	public String getVisitYear()
+	public int getPrevVisitYear()
 	{
-		return ""+yearSpinner.getValue();
+		return (Integer)prevYearSpinner.getValue();
+	}
+	
+	public int getNextVisitDay()
+	{
+		return (Integer)nextDaySpinner.getValue();
+	}
+
+	public int getNextVisitMonth()
+	{
+		return (Integer)nextMonthSpinner.getValue();
+	}
+
+	public int getNextVisitYear()
+	{
+		return (Integer)nextYearSpinner.getValue();
+	}
+
+	public JTextField getThcNUM() {
+		return thcNUM;
+	}
+
+	public JTextField getPatientName() {
+		return patientName;
+	}
+
+	public JTextField getVisitSeqNum() {
+		return visitSeqNum;
+	}
+
+	public JTextField getProtocolNum() {
+		return protocolNum;
+	}
+
+	public JSpinner getProblem() {
+		return Problem;
+	}
+
+	public JSpinner getCategory() {
+		return category;
+	}
+
+	public JTextField getProtocol() {
+		return protocol;
+	}
+
+	public JSpinner getInstrumental() {
+		return instrumental;
+	}
+
+	public JCheckBox getRem() {
+		return rem;
+	}
+
+	public JSpinner getFollowUp() {
+		return followUp;
+	}
+
+	public JTextField getAddCComments() {
+		return addCComments;
+	}
+
+	public JButton getSaveButton() {
+		return saveButton;
 	}
 }
