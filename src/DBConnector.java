@@ -16,6 +16,9 @@ public class DBConnector {
 	//table names
 	public static String PATIENT_TABLE = "patient";
 
+
+
+
 	public static DefaultTableModel execSelect() throws ClassNotFoundException, SQLException {
 		// Load the Driver
 		// Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -56,6 +59,7 @@ public class DBConnector {
 			}
 			model.addRow(row);
 		}
+
 		////////////////////
 //		model.addRow(new String[] { "Johnny", "Stfondi" });
 //		model.addRow(new String[] { "Lili", "Rochefort" });

@@ -62,7 +62,7 @@ public class PatientSearchController {
 			String firstName = viewer.getFirstName();
 			String lastName = viewer.getLastName();
 			String phone = viewer.getPhone();
-			
+
 			ArrayList<String> colNames = new ArrayList<String>();
 			ArrayList<String> values = new ArrayList<String>();
 			
@@ -130,7 +130,7 @@ public class PatientSearchController {
 //			String visitDate = "1998-05-14";
 			
 			String patientName = (String)viewer.getTableRowContents(1) + " " + (String)viewer.getTableRowContents(2);
-			String patientTHC = Integer.toString((Integer)viewer.getTableRowContents(0));
+			String patientTHC = ""+viewer.getTableRowContents(0);
 			String visitSN = "3";
 			String visitDate = "1998-05-14";
 			
