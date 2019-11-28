@@ -19,7 +19,8 @@ public class MainWindowController {
 	
 	public class PatientActionListener implements ActionListener
 	{
-		public void actionPerformed(ActionEvent ae) {
+		public void actionPerformed(ActionEvent ae) 
+		{
 			viewer.switchCard(MainWindowViewer.PATIENT_CARD);
 		}
 	}
