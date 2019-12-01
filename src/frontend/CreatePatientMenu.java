@@ -141,15 +141,16 @@ public class CreatePatientMenu {
 			String statement = INSERT_STATEMENT("PATIENT", arr("THC_num","first_name", "last_name", "street_address", "zip_code", "city", "date_of_birth", "gender", "phone_num"),
 					arr(""+str(firstName,lastName,dobYear).hashCode(),firstName, lastName, streetAddress, zipcode, city,str(dobYear,"-",dobMonth,"-",dobDay), sex, phone));
 			print(statement);
-			try {
-				update(statement);
-			} catch (SQLException ex) {
-
-				print(ex.getSQLState());
-			}
 
 
-		});
+            try {
+                update(statement);
+            } catch (SQLException ex) {
+               print(""+ex.getErrorCode());
+            }
+
+
+        });
 	}
 
 }

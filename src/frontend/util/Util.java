@@ -8,28 +8,28 @@ import java.sql.SQLException;
 public class Util {
 
     //CREDIT: Kevin
-    public static DefaultTableModel display_result(ResultSet set) throws SQLException {
-        //Convert the results to a DefaultTableModel
+    public static String[] getAttrtibute(ResultSet set) throws SQLException {
         ResultSetMetaData resultsMetaData = set.getMetaData();
-        int cols = resultsMetaData.getColumnCount();
-        String[] colNames = new String[cols];
-        for (int i = 0; i < cols; i++)
-        {
-            colNames[i] = resultsMetaData.getColumnName(i);
+        int limit = resultsMetaData.getColumnCount();
+        String[] arr = new String[limit];
+        for (int i = 1; i <=limit; i++) {
+            arr[i-1] = resultsMetaData.getColumnName(i);
         }
+        return arr;
+    }
 
-        DefaultTableModel model = new DefaultTableModel(colNames, 0);
-        while (set.next())
-        {
+    //CREDIT: Kevin
+    public static DefaultTableModel getData(DefaultTableModel model,ResultSet set) throws SQLException {
+        while (set.next()){
+            int limit=set.getMetaData().getColumnCount();
+            Object[] row = new Object[limit];
 
-            Object[] row = new Object[cols];
-            for (int i = 0; i < cols; i++)
-            {
-                row[i] = set.getObject(i);
+            for (int i = 1; i <= limit; i++) {
+                row[i - 1] = set.getObject(i);
             }
             model.addRow(row);
         }
-
         return model;
     }
+
 }

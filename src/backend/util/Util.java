@@ -1,11 +1,20 @@
 package backend.util;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Util {
     //make your  life easier
+
+
+
+
+
+
+
+
+
+
+
 
     @SafeVarargs
     public static <E> E[] arr(E... arr) {
@@ -15,8 +24,8 @@ public class Util {
     @SafeVarargs
     public static <E> List<E> list(E... arr) {
         return Arrays.asList(arr);
-    }
 
+}
     public static String str(String... strs) {
         if (strs.length == 1) {
             return strs[0];

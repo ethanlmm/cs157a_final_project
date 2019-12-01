@@ -77,10 +77,6 @@ public class StatementMaker {
         target.append(asTuple(values_table, true));
     }
 
-    //make life easier
-    public static String[] list(String... lst) {
-        return lst;
-    }
 
     public static String STR(String... x) {
         return strWrapper(x, "", true).toString();
@@ -108,8 +104,8 @@ public class StatementMaker {
     public static void main(String[] args) {
         StatementMaker s = new StatementMaker();
 
-        String x = INSERT_STATEMENT("medical", list("FIRST_NAME", "LAST_NAME"), list("Tom", "Woods"));
-        String y = SELECT_STATEMENT("CUSTOMER",list("A", "B", "C", "D"), STR("test", "==", "1000"));
+        String x = INSERT_STATEMENT("medical", arr("FIRST_NAME", "LAST_NAME"), arr("Tom", "Woods"));
+        String y = SELECT_STATEMENT("CUSTOMER",arr("A", "B", "C", "D"), STR("test", "==", "1000"));
         String z = UPDATE_STATEMENT("CUSTOMER",arr("A", "B", "C", "D"),arr("1","str2","3","4"), STR("test", "==", "1000"));
         print(x);
         print(y);

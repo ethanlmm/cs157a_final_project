@@ -2,11 +2,23 @@ import frontend.AudiologyViewer;
 import frontend.PatientSearchMenu;
 import frontend.PharmacologyViewer;
 
+import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
+
+import static backend.Connector.*;
+
+
+import static backend.StatementMaker.*;
+import static backend.util.Util.*;
 public class PatientSearchController {
 
 	private PatientSearchMenu viewer;
@@ -22,99 +34,8 @@ public class PatientSearchController {
 //		
 //	}
 	
-	public PatientSearchController(PatientSearchMenu _viewer)
-	{
-		this.viewer = _viewer;
-		try 
-		{
-			viewer.setTable(DBConnector.execSelect());
-		} catch (ClassNotFoundException e1) 
-		{
-			e1.printStackTrace();
-		} catch (SQLException se)
-		{
-			SQLUtil.printSQLExceptions(se);
-		}
-		viewer.addSearchButtonAction(new SearchActionListener());
-		viewer.addAddAudiologyButtonAction(new AddAudiologyActionListener());
-		viewer.addCloseButtonAction(new CloseButtonActionListener());
-	}
-	
-	//original
-//	private class SearchActionListener implements ActionListener
-//	{
-//		public void actionPerformed(ActionEvent e) 
-//		{
-//			try 
-//			{
-//				viewer.setTable(DBConnector.execSelect());
-//			} catch (ClassNotFoundException e1) 
-//			{
-//				e1.printStackTrace();
-//			} catch (SQLException se)
-//			{
-//				SQLUtil.printSQLExceptions(se);
-//			}
-//		}
-//	}
-	
-	private class SearchActionListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			String patientTHC = viewer.getPatientTHC();
-			String firstName = viewer.getFirstName();
-			String lastName = viewer.getLastName();
-			String phone = viewer.getPhone();
 
-			ArrayList<String> colNames = new ArrayList<String>();
-			ArrayList<String> values = new ArrayList<String>();
-			
-			if (!patientTHC.isEmpty())
-			{
-				colNames.add("THC_Num");
-				values.add(patientTHC);
-			}
-			if (!firstName.isEmpty())
-			{
-				colNames.add("first_name");
-				values.add("\""+firstName+"\"");
-			}
-			if (!lastName.isEmpty())
-			{
-				colNames.add("last_name");
-				values.add("\""+lastName+"\"");
-			}
-			if (!phone.isEmpty())
-			{
-				colNames.add("phone_num");
-				values.add("\""+phone+"\"");
-			}
-			
-//			System.out.println(patientTHC.length());
-//			System.out.println(firstName.length());
-//			System.out.println(lastName.length());
-//			System.out.println(phone.length());
 
-			
-//			for (int i = 0; i < colNames.size(); i++)
-//			{
-//				System.out.println(colNames.get(i) + " " + values.get(i));
-//			}
-			
-			try 
-			{
-				viewer.setTable(DBConnector.execSelect(colNames, values));
-			} catch (ClassNotFoundException e1) 
-			{
-				e1.printStackTrace();
-			} catch (SQLException se)
-			{
-//				SQLUtil.printSQLExceptions(se);
-				se.printStackTrace();
-			}
-		}
-	}
 	
 	private class AddAudiologyActionListener implements ActionListener
 	{
@@ -146,12 +67,8 @@ public class PatientSearchController {
 		}
 	}
 	
-	private class CloseButtonActionListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) {
-			viewer.close();
-		}
-	}
+
+
 	
 	private class SaveButtonActionListener implements ActionListener
 	{

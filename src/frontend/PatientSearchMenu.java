@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -19,6 +21,14 @@ import javax.swing.WindowConstants;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.DefaultTableColumnModel;
 import javax.swing.table.DefaultTableModel;
+
+import frontend.util.Util;
+
+
+import static backend.Connector.query;
+import static backend.StatementMaker.SELECT_STATEMENT;
+import static backend.util.Util.arr;
+import static backend.util.Util.*;
 
 public class PatientSearchMenu extends TableViewer {
 	
@@ -38,22 +48,8 @@ public class PatientSearchMenu extends TableViewer {
 	public PatientSearchMenu()
 	{
 		super();
-		DefaultTableModel model = new DefaultTableModel(new String[] {"First Name", "Last Name"}, 0);
-		
-		model.addRow(new String[] {"pls buff", "May"});
-		model.addRow(new String[] {"Lilica", "Felchenerow"});
-		model.addRow(new String[] {"Lucky", "Chloe"});
-		model.addRow(new String[] {"Makoto", "Nanaya"});
-		model.addRow(new String[] {"french bread pls giv", "Kaguya"});
-		
-		
-//		table = new JTable(model);
 		JScrollPane tableScrollPane = new JScrollPane(getTable());
-//		table.setFillsViewportHeight(true);
-//		table.setAutoCreateRowSorter(true);
-//		table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		table.changeSelection(0, 0, false, false);
-		
+
 		JPanel searchPanel = new JPanel();
 		
 		JLabel patientTHCLabel = new JLabel("Patient THC", SwingConstants.RIGHT);
@@ -96,54 +92,45 @@ public class PatientSearchMenu extends TableViewer {
 		dialog.setVisible(true);
 		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 
+		addAudiologyButton.addActionListener(e -> {
+			String patientName = (String)getTableRowContents(1) + " " + (String)getTableRowContents(2);
+			String patientTHC = ""+getTableRowContents(0);
+			String visitSN = "3";
+			String visitDate = "1998-05-14";
+
+			AudiologyViewer av = new AudiologyViewer(patientName, patientTHC, visitSN, visitDate);
+			PharmacologyViewer pv = new PharmacologyViewer(patientName, patientTHC, visitSN, visitDate);
+
+		});
+
+
+
+
+		searchButton.addActionListener(e -> {
+			String patientTHC = patientTHCTField.getText();
+			String firstName = firstNameTField.getText();
+			String lastName = lastNameTField.getText();
+			String phone = phoneTField.getText();
+			String where="";
+			if (!patientTHC.isEmpty()) where = str("THC_Num", "=", patientTHC);
+			else if (!firstName.isEmpty()&&!lastName.isEmpty())where = str("first_name", "=", "\'",firstName,"\'", " AND ","last_name", "=","\'", lastName,"\'");
+			else if (!phone.isEmpty())  where=str("phone_num", "=", phone);
+			String statement =SELECT_STATEMENT("Patient",arr(),where);
+			print(statement);
+			try {
+				ResultSet set=query(statement);
+				DefaultTableModel table =new DefaultTableModel(Util.getAttrtibute(set),0);
+				Util.getData(table,set);
+				this.setTable(table);
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		});
 		closeButton.addActionListener(e -> {
-			close();
+			dialog.dispose();
 		});
 	}
 	
-	public void addAddAudiologyButtonAction(ActionListener al)
-	{
-		addAudiologyButton.addActionListener(al);
-	}
-	
-	public void addSearchButtonAction(ActionListener al)
-	{
-		searchButton.addActionListener(al);
-	}
-	
-	public void addCloseButtonAction(ActionListener al)
-	{
-		closeButton.addActionListener(al);
-	}
-	
-	public void addSaveButtonAction(ActionListener al)
-	{
-		saveButton.addActionListener(al);
-	}
-	
-	public String getPatientTHC()
-	{
-		return patientTHCTField.getText();
-	}
-	
-	public String getFirstName()
-	{
-		return firstNameTField.getText();
-	}
-	
-	public String getLastName()
-	{
-		return lastNameTField.getText();
-	}
-	
-	public String getPhone()
-	{
-		return phoneTField.getText();
-	}
-	
-	public void close()
-	{
-		dialog.dispose();
-	}
+
 	
 }
