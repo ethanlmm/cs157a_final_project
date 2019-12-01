@@ -25,8 +25,8 @@ import javax.swing.table.DefaultTableModel;
 import frontend.util.Util;
 
 
-import static backend.Connector.query;
-import static backend.StatementMaker.SELECT_STATEMENT;
+import static backend.Connector.*;
+import static backend.StatementMaker.*;
 import static backend.util.Util.arr;
 import static backend.util.Util.*;
 
@@ -102,9 +102,39 @@ public class PatientSearchMenu extends TableViewer {
 			PharmacologyViewer pv = new PharmacologyViewer(patientName, patientTHC, visitSN, visitDate);
 
 		});
+		saveButton.addActionListener(e -> {
+			String[] attributes=arr("THC_Num","first_name","last_name","street_address","zip_code","city","date_of_birth","gender","phone_num");
+			Integer[] changedRows = getChangedRows();
+			for(int i=0;i<changedRows.length;i++) {
+				Integer[] changedCols = getChangedCols(changedRows[i]);
+				for (int j = 0; j < changedCols.length; j++) {
+					String thc=""+this.getTableContentsAt(changedRows[i],0);
+					String content=""+this.getTableContentsAt(changedRows[i],changedCols[i]);
+					String column=""+attributes[changedRows[i]];
+					String where =str("THC_Num","=",thc);
+					String statement=UPDATE_STATEMENT("Patient",arr(column),arr(content),where);
+					print(statement);
+					try {
+						update(statement);
+					} catch (SQLException ex) {
+						ex.printStackTrace();
+					}
 
+				}
+			}
+		});
 
+		addAudiologyButton.addActionListener(e -> {
+			String patientName = ""+getTableRowContents(1) + " " + getTableRowContents(2);
+			String patientTHC = ""+getTableRowContents(0);
+			String visitSN = "3";
+			String visitDate = "1998-05-14";
 
+			AudiologyViewer av = new AudiologyViewer(patientName, patientTHC, visitSN, visitDate);
+			
+			PharmacologyViewer pv = new PharmacologyViewer(patientName, patientTHC, visitSN, visitDate);
+
+		});
 
 		searchButton.addActionListener(e -> {
 			String patientTHC = patientTHCTField.getText();

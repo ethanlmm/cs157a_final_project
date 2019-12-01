@@ -20,7 +20,7 @@ public class StatementMaker {
         result.append(str("UPDATE ",table_name));
     }
     private static void SET(StringBuffer result,String[] columns,String[] new_data){
-        result.append("SET ");
+        result.append(" SET ");
         for(int i=0;i<columns.length;i++){
             result.append(str(columns[i],"=",STR(new_data[i])));
             if(i<columns.length-1)result.append(",");
