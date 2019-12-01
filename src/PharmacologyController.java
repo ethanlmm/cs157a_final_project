@@ -1,9 +1,10 @@
+import frontend.PharmacologyViewer;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 
 import static backend.Connector.update;
-import static backend.StatementMaker.INSERT_STATEMENT;
 import static backend.StatementMaker.UPDATE_STATEMENT;
 import static backend.util.Util.*;
 

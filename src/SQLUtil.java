@@ -6,7 +6,7 @@ public class SQLUtil
 	* This method displays all columns and rows in the given result set.
 	* @param rs  The result set to be displayed.
 	* @return  None.
-	* @exception SQLException.
+	* @exception SQLException
 	*/
 
 	static public void 
@@ -51,7 +51,7 @@ public class SQLUtil
 	* @param warn The list of SQLWarnings.
 	* @return true if a warning existed, false otherwise.
 	* @exception  SQLException
-	* @see Utils#printSQLExceptions
+
 	* @exception SQLException;
 	*/
 	static public boolean 
@@ -80,9 +80,9 @@ public class SQLUtil
 	* This method checks for exceptions and displays error information. 
 	* Note that multiple exception objects could be chained together.
 	* Very similar to printSQLWarnings.
-	* @param warn The list of SQLException.
+
 	* @return true if an exception existed, false otherwise.
-	* @see Utils#printSQLWarnings
+
 	*/
 	static public boolean 
 	printSQLExceptions(SQLException ex)
@@ -130,7 +130,7 @@ public class SQLUtil
 	* This method displays driver name and version.
 	* @param con The current connection.
 	* @return None.
-	* @exception SQLException.
+	* @exception SQLException
 	*/
 	static public void 
 	printDriverInfo(Connection con)

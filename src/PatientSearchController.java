@@ -1,3 +1,7 @@
+import frontend.AudiologyViewer;
+import frontend.PatientSearchMenu;
+import frontend.PharmacologyViewer;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -5,10 +9,10 @@ import java.util.ArrayList;
 
 public class PatientSearchController {
 
-	private PatientSearchViewer viewer;
+	private PatientSearchMenu viewer;
 //	private PatientSearchModel model;
 	
-//	public PatientSearchController(PatientSearchViewer _viewer, PatientSearchModel _model)
+//	public PatientSearchController(frontend.PatientSearchViewer _viewer, PatientSearchModel _model)
 //	{
 //		this.viewer = _viewer;
 //		this.model = _model;
@@ -18,7 +22,7 @@ public class PatientSearchController {
 //		
 //	}
 	
-	public PatientSearchController(PatientSearchViewer _viewer)
+	public PatientSearchController(PatientSearchMenu _viewer)
 	{
 		this.viewer = _viewer;
 		try 

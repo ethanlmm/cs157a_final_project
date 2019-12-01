@@ -43,7 +43,6 @@ public class Connector {
         while (set.next())
         {
 
-
             Object[] row = new Object[cols];
             for (int i = 0; i < cols; i++)
             {
