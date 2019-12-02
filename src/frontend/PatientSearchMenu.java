@@ -131,7 +131,7 @@ public class PatientSearchMenu extends TableViewer {
 			String visitDate = "1998-05-14";
 
 			AudiologyViewer av = new AudiologyViewer(patientName, patientTHC, visitSN, visitDate);
-			
+
 			PharmacologyViewer pv = new PharmacologyViewer(patientName, patientTHC, visitSN, visitDate);
 
 		});
