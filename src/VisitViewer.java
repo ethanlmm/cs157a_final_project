@@ -16,19 +16,19 @@ public class VisitViewer extends TableViewer
 	private JSpinner prevMonthSpinner = new JSpinner();
 	private JSpinner prevDaySpinner = new JSpinner();
 	private JSpinner prevYearSpinner = new JSpinner();
-	
+
 	private JSpinner nextMonthSpinner = new JSpinner();
 	private JSpinner nextDaySpinner = new JSpinner();
 	private JSpinner nextYearSpinner = new JSpinner();
 
 	private JTextField protocolNum = new JTextField(TEXTFIELD_WIDTH);
-	private JSpinner Problem = new JSpinner();
+	private JSpinner problem = new JSpinner();
 	private JSpinner category = new JSpinner();
 	private JTextField protocol = new JTextField(); //assigned random number
 	private JSpinner instrumental = new JSpinner();
 	private JCheckBox rem = new JCheckBox();
 	private JSpinner followUp = new JSpinner();
-	private JTextField addCComments = new JTextField(50);
+	private JTextField addComments = new JTextField(50);
 
 	private JButton saveButton = new JButton("Save");
 	private JButton cancelButton = new JButton("Cancel");
@@ -51,6 +51,26 @@ public class VisitViewer extends TableViewer
 		constraints.gridy = 0;
 		dialog.add(thcLabel, constraints);
 
+		JLabel nameLabel = new JLabel("Name", SwingConstants.RIGHT);
+		patientName.setHorizontalAlignment(JTextField.RIGHT);
+		constraints.gridx = 2;
+		constraints.gridy = 0;
+		dialog.add(nameLabel, constraints);
+		constraints.gridx = 3;
+		constraints.gridy = 0;
+		dialog.add(patientName, constraints);
+
+		JLabel visitSeqNumLabel = new JLabel("Visit Number:", SwingConstants.RIGHT);
+		visitSeqNum.setHorizontalAlignment(JTextField.RIGHT);
+		constraints.gridx = 0;
+		constraints.gridy = 1;
+		dialog.add(visitSeqNumLabel, constraints);
+		constraints.gridx = 1;
+		constraints.gridy = 1;
+		dialog.add(visitSeqNum, constraints);
+
+		//blank space
+
 		JLabel visitLabel = new JLabel("Visit Date:", SwingConstants.RIGHT);
 		prevMonthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
 		prevDaySpinner.setModel(new SpinnerNumberModel(1, 1, 32, 1));
@@ -59,6 +79,12 @@ public class VisitViewer extends TableViewer
 		visitPanel.add(prevMonthSpinner);
 		visitPanel.add(prevDaySpinner);
 		visitPanel.add(prevYearSpinner);
+		constraints.gridx = 0;
+		constraints.gridy = 2;
+		dialog.add(visitLabel, constraints);
+		constraints.gridx = 1;
+		constraints.gridy = 2;
+		dialog.add(visitPanel, constraints);
 
 		JLabel nextVisitLabel = new JLabel("Next Visit Date:", SwingConstants.RIGHT);
 		nextMonthSpinner.setModel(new SpinnerNumberModel(1, 1, 12, 1));
@@ -68,6 +94,31 @@ public class VisitViewer extends TableViewer
 		nextVisitLabelPanel.add(nextMonthSpinner);
 		nextVisitLabelPanel.add(nextDaySpinner);
 		nextVisitLabelPanel.add(nextYearSpinner);
+		constraints.gridx = 2;
+		constraints.gridy = 2;
+		dialog.add(nextVisitLabel, constraints);
+		constraints.gridx = 3;
+		constraints.gridy = 2;
+		dialog.add(nextVisitLabelPanel, constraints);
+
+		JLabel protocolNumLabel = new JLabel("Protocol Number:", SwingConstants.RIGHT);
+		protocolNum.setHorizontalAlignment(JTextField.RIGHT);
+		constraints.gridx = 0;
+		constraints.gridy = 3;
+		dialog.add(protocolNumLabel, constraints);
+		constraints.gridx = 1;
+		constraints.gridy = 3;
+		dialog.add(protocolNum, constraints);
+
+		JLabel problemLabel = new JLabel("Problem", SwingConstants.RIGHT);
+		String[] problemOpt = {"THC", "T", "HT"};
+		problem.setModel(new SpinnerListModel(problemOpt));
+		constraints.gridx = 2;
+		constraints.gridy = 3;
+		dialog.add(problemLabel, constraints);
+		constraints.gridx = 3;
+		constraints.gridy = 3;
+		dialog.add(problem, constraints);
 
 		constraints.gridx = 1;
 		constraints.gridy = 4;
@@ -98,7 +149,7 @@ public class VisitViewer extends TableViewer
 	{
 		return (Integer)prevYearSpinner.getValue();
 	}
-	
+
 	public int getNextVisitDay()
 	{
 		return (Integer)nextDaySpinner.getValue();
@@ -114,51 +165,55 @@ public class VisitViewer extends TableViewer
 		return (Integer)nextYearSpinner.getValue();
 	}
 
-	public JTextField getThcNUM() {
-		return thcNUM;
+	public String getThcNUM() {
+		return thcNUM.getText();
 	}
 
-	public JTextField getPatientName() {
-		return patientName;
+	public String getPatientName() {
+		return patientName.getText();
 	}
 
-	public JTextField getVisitSeqNum() {
-		return visitSeqNum;
+	public String getVisitSeqNum() {
+		return visitSeqNum.getText();
 	}
 
-	public JTextField getProtocolNum() {
-		return protocolNum;
+	public String getProtocolNum() {
+		return protocolNum.getText();
 	}
 
-	public JSpinner getProblem() {
-		return Problem;
+	public String getProblem() {
+		return Problem.getValue();
 	}
 
-	public JSpinner getCategory() {
-		return category;
+	public int getCategory() {
+		return category.getValue();
 	}
 
-	public JTextField getProtocol() {
-		return protocol;
+	public String getProtocol() {
+		return protocol.getText();
 	}
 
-	public JSpinner getInstrumental() {
-		return instrumental;
+	public String getInstrumental() {
+		return instrumental.getValue();
 	}
 
-	public JCheckBox getRem() {
-		return rem;
+	/*public String getRem() {
+		return rem.get;
+	}*/
+
+	public String getFollowUp() {
+		return followUp.getValue();
 	}
 
-	public JSpinner getFollowUp() {
-		return followUp;
+	public String getAddCComments() {
+		return addCComments.getText();
 	}
 
-	public JTextField getAddCComments() {
-		return addCComments;
-	}
-
-	public JButton getSaveButton() {
+	/*public JButton getSaveButton() {
 		return saveButton;
 	}
+
+	public JButton getCancelButton() {
+		return cancelButton;
+	}*/
 }
