@@ -20,7 +20,7 @@ public class VisitMenu {
         });
 
         createVisitAppButton.addActionListener(e -> {
-            //Layout.switchCard(Layout.VISIT_MENU);
+            VisitViewer menu =new VisitViewer();
         });
         editVisitButton.addActionListener(e -> {
             //Layout.switchCard(Layout.VISIT_MENU);

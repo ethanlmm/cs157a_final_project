@@ -67,7 +67,7 @@ ENGINE = InnoDB;
 -- Table `mydb`.`Audiology`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `mydb`.`Audiology` (
-  `Visit_visit_id` INT NOT NULL,
+  `THC_Num` INT NOT NULL,
   `pta_Right` INT NOT NULL,
   `pta_Left` INT NOT NULL,
   `right_TRP` INT NOT NULL,

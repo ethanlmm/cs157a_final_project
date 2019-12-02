@@ -121,10 +121,10 @@ public class AudiologyViewer extends Viewer {
 
 		saveButton.addActionListener(e -> {
 			String comment=comments.getText();
-			String[] contents=arr(""+comment.hashCode(),pta_Right.getText(),pta_Left.getText(),right_TRP.getText(),right_Trm.getText(),right_TLR.getText(),right_ThR.getText(),
+			String[] contents=arr(patientTHC,pta_Right.getText(),pta_Left.getText(),right_TRP.getText(),right_Trm.getText(),right_TLR.getText(),right_ThR.getText(),
 					left_TLP.getText(),left_TLm.getText(),left_TLL.getText(),left_ThL.getText(),WNR.getText(),WNL.getText(),mml_Right.getText(),mml_Left.getText(),RSD.getText(),
 					LSD.getText(),pt_LDL_Right.getText(),pt_LDL_Left.getText(),comment);
-			String[] attributes=arr("Visit_visit_id","pta_Right","pta_Left","right_TRP","right_TRm","right_TLR","right_ThR",
+			String[] attributes=arr("THC_Num","pta_Right","pta_Left","right_TRP","right_TRm","right_TLR","right_ThR",
 					"left_TLP","left_TLm","left_TLL","left_ThL","WNR","WNL","mml_Right","mml_Left","RSD",
 					"LSD","pt_LDL_Right","pt_LDL_Left","comments");
 
