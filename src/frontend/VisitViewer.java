@@ -130,4 +130,3 @@ public class VisitViewer extends TableViewer {
 		dialog.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
 	}
 
-}
